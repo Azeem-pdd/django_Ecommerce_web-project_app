@@ -1,0 +1,135 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load cart %}
+{% block content %}
+        
+        <!-- Breadcrumb Start -->
+        <div class="breadcrumb-wrap">
+            <div class="container-fluid">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item"><a href="#">Products</a></li>
+                    <li class="breadcrumb-item active">Checkout</li>
+                </ul>
+            </div>
+        </div>
+        <!-- Breadcrumb End -->
+        
+        <!-- Checkout Start -->
+        <div class="checkout">
+            <div class="container-fluid"> 
+                <div class="row">
+                    <form method="POST" action="/checkout">
+                        {% csrf_token %}
+                        <div class="col-lg-12">
+                            <div class="checkout-inner">
+                                <div class="checkout-summary">
+                                    <h2>Billing Address</h2>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Name</label>
+                                            <input class="form-control" value="{{customer.first_name}} {{customer.last_name}}" name="name" type="text" placeholder="Name" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label>E-mail</label>
+                                            <input class="form-control" value="{{customer.email}}" name="email" type="text" placeholder="E-mail" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label>Mobile No</label>
+                                            <input class="form-control" value="{{profile.phno}}" name="phno" type="text" placeholder="Mobile No" required>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <label>Address</label>
+                                            <input class="form-control" value="{{profile.home_address}}" name="address" type="text" placeholder="Address" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label>Country</label>
+                                            <select class="custom-select">
+                                                <option selected>Pakistan</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label>City</label>
+                                            <input class="form-control" name="city" type="text" placeholder="City" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label>ZIP Code</label>
+                                            <input class="form-control" value="{{profile.zip_code}}" name="zipcode" type="text" placeholder="ZIP Code" required>
+                                        </div>
+                                        <br><br><br><br><br><br>
+                                        <div class="payment-methods col-md-12">
+                                            <h1>Payment Methods</h1>
+                                            
+                                            <div class="checkout-summary">
+                                                {% for p in pay_method %}
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" name="pay_method" class="custom-control-input" id="{{p.id}}" value="{{p.id}}">
+                                                    <label class="custom-control-label" for="{{p.id}}" >{{p.name}}</label>
+                                                </div>
+                                                {% endfor %}
+                                            </div>
+                                                
+                                                
+                                            
+                                            
+                                            
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" name="ship_to_diff_addr" class="custom-control-input" id="shipto" value="True">
+                                                <label class="custom-control-label" for="shipto">Ship to different address</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="shipping-address checkout-summary">
+                                    <h2>Shipping Address</h2>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Name</label>
+                                            <input class="form-control" name="name1" type="text" placeholder="Name">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label>Mobile No</label>
+                                            <input class="form-control" name="phno1" type="text" placeholder="Mobile No">
+                                        </div>
+                                        <div class="col-md-12">
+                                            <label>Address</label>
+                                            <input class="form-control" name="address1" type="text" placeholder="Address">
+                                        </div>
+                                        
+                                        
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-12">
+                            <div class="checkout-inner">
+                                <div class="checkout-summary">
+                                    <h1>Cart Total</h1>
+                                    <p class="sub-total">Sub Total<span>${{products|cart_price_total:request.session.cart}}</span></p>
+                                    <p class="ship-cost">Shipping Cost<span>$1</span></p>
+                                    <h2>Grand Total<span>${{products|total_payable:request.session.cart}}</span></h2>
+                                    <input hidden type="text" name="total_price" value="{{products|total_payable:request.session.cart}}">
+                                </div>
+                                <div class="checkout-payment">
+                                    
+                                    <div class="checkout-btn">
+                                        <button type="submit">Place Order</button>
+                                    </div>
+                                </div>
+                                
+
+                                
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Checkout End -->
+        
+        {% endblock %}
