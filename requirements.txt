@@ -43,4 +43,3 @@ virtualenvwrapper-win==1.2.6
 wcwidth==0.2.5
 whitenoise==5.3.0
 wrapt==1.12.1
-pypiwin32==223
