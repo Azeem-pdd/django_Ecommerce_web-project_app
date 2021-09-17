@@ -82,7 +82,7 @@ DATABASES = {
         'NAME': 'ClothingStore',
         'USER':'postgres',
         'PASSWORD':'313313',
-        'HOST':'localhost',
+        'HOST':'shopoutfitsonline.herokuapp.com',
     }
 }
 
