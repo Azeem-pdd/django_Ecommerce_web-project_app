@@ -1,1 +1,1 @@
-web: gunicorn shopoutfitsonline.wsgi --log-file -
+web: gunicorn Estore.wsgi --log-file -
