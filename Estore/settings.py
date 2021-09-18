@@ -82,7 +82,7 @@ DATABASES = {
         'NAME': 'd78mtq8gnjuvsv',
         'USER':'photsmkkckexto',
         'PASSWORD':'59510f020b6a246cdb10b5c7aaa63b0215aa2e5d7f305d6f476fc1019a5d4239',
-        'HOST':'ec2-3-219-111-26.compute-1.amazonaws.compython',
+        'HOST':'ec2-3-219-111-26.compute-1.amazonaws.com',
         'PORT': '5432',
     }
 }
