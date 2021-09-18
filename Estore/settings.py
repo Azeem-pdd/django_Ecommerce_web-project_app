@@ -79,10 +79,11 @@ WSGI_APPLICATION = 'Estore.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'ClothingStore',
-        'USER':'postgres',
-        'PASSWORD':'313313',
-        'HOST':'localhost',
+        'NAME': 'd78mtq8gnjuvsv',
+        'USER':'photsmkkckexto',
+        'PASSWORD':'59510f020b6a246cdb10b5c7aaa63b0215aa2e5d7f305d6f476fc1019a5d4239',
+        'HOST':'ec2-3-219-111-26.compute-1.amazonaws.com',
+        'PORT': '5432',
     }
 }
 
