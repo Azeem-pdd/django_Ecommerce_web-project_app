@@ -20,7 +20,6 @@ class Login(View):
         if obj==False:
             error_msg = "Invalid Email or password"
         elif check_password(Password,obj.password):
-            obj.save()
             request.session['customer'] = obj.id
         else:
             error_msg = "Invalid Email or password"

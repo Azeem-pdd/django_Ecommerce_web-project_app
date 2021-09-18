@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '0_4$mzu555-$!qd5-%qhc-zk=8ykykyto^yaz9h9(gwj0#ex77'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1','shopoutfitsonline.herokuapp.com']
 
@@ -82,7 +82,7 @@ DATABASES = {
         'NAME': 'd78mtq8gnjuvsv',
         'USER':'photsmkkckexto',
         'PASSWORD':'59510f020b6a246cdb10b5c7aaa63b0215aa2e5d7f305d6f476fc1019a5d4239',
-        'HOST':'ec2-3-219-111-26.compute-1.amazonaws.com',
+        'HOST':'ec2-3-219-111-26.compute-1.amazonaws.compython',
         'PORT': '5432',
     }
 }
