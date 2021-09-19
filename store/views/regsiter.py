@@ -59,7 +59,7 @@ class Register(View):
             customer.confirm_password = make_password(customer.confirm_password, salt=None, hasher='default')
             customer.save()
             
-            return redirect('index')
+            return redirect('login')
 
         else:
             print(error_msg)
