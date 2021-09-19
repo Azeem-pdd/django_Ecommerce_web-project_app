@@ -58,6 +58,7 @@ class Checkout(View):
         cart = request.session.get('cart')
         keys = None
         products = None
+        error_msg=None
         if cart:
             keys = cart.keys()
             products = Products.get_product_by_product_id(keys)

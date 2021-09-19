@@ -27,7 +27,7 @@ class Order(models.Model):
     email = models.EmailField(default="")
     date = models.DateTimeField(auto_now_add=True)
     price = models.IntegerField(default=0)
-    payment_method = models.ForeignKey(Payment_method, on_delete=models.DO_NOTHING)
+    payment_method = models.ForeignKey(Payment_method, on_delete=models.DO_NOTHING, null=True)
     name_additional = models.CharField(max_length=20, null=True,blank=True)
     phno_additional = models.BigIntegerField(null=True, blank=True)
 
