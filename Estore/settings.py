@@ -132,3 +132,6 @@ import dj_database_url
 db_from_env = dj_database_url.config(conn_max_age=600)
 DATABASES['default']=dj_database_url.config(default='postgres://photsmkkckexto:59510f020b6a246cdb10b5c7aaa63b0215aa2e5d7f305d6f476fc1019a5d4239@ec2-3-219-111-26.compute-1.amazonaws.com:5432/d78mtq8gnjuvsv')
 DATABASES['default'].update(db_from_env)
+
+
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
