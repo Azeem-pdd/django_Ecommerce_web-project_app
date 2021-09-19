@@ -69,40 +69,44 @@ class Checkout(View):
         cust = Customer.objects.filter(id = customer).first()
         if products!=None:
 
+            if pay_method:
         
-        
-            order = Order.objects.create(name = name,
-            customer = cust,
-            address = address,
-            
-            phno = phno,
-            email = email,
-            price = total_price,
-            payment_method = Payment_method.objects.filter(id = pay_method).first(),
-            
+                order = Order.objects.create(name = name,
+                customer = cust,
+                address = address,
+                
+                phno = phno,
+                email = email,
+                price = total_price,
+                payment_method = Payment_method.objects.filter(id = pay_method).first(),
+                
 
 
-            )
-            order.products.set(products)
-            if ship_to_diff_addr:
-                order.name_additional = name1
-                order.shipping_address = address1
-                order.phno_additional = phno1
+                )
+                order.products.set(products)
+                if ship_to_diff_addr:
+                    order.name_additional = name1
+                    order.shipping_address = address1
+                    order.phno_additional = phno1
+                else:
+                    try:
+                        order.shipping_address = Profile.objects.get(customer=cust).shipping_address
+                    except:
+                        pass
+                order.save()
+                    
+            
+                    
+                for p in products:
+                    orderprod = OrderProduct(order = order,
+                    product = p,
+                    quantity = c.product_quantity(p, cart))
+                    orderprod.save()
+                request.session['cart'] = None
+                return redirect('success')
             else:
-                try:
-                    order.shipping_address = Profile.objects.get(customer=cust).shipping_address
-                except:
-                    pass
-            order.save()
-                
-        
-                
-            for p in products:
-                orderprod = OrderProduct(order = order,
-                product = p,
-                quantity = c.product_quantity(p, cart))
-                orderprod.save()
-            request.session['cart'] = None
-            return redirect('success')
+                error_msg='Choose payment method'
         else:
-            return HttpResponse('No Products in cart. Enter Products in Cart First.')
+            error_msg='No Products in cart. Enter Products in Cart First.'
+        if error_msg:
+            return render(request, 'checkout.html', {'error_msg':error_msg})

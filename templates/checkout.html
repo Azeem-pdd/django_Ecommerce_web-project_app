@@ -25,6 +25,11 @@
                             <div class="checkout-inner">
                                 <div class="checkout-summary">
                                     <h2>Billing Address</h2>
+                                    {% if error_msg%}
+                                    <div class="alert alert-danger">
+                                        <strong>Attention!</strong> {{error_msg}}
+                                    </div>
+                                    {% endif %}
                                     <div class="row">
                                         <div class="col-md-6">
                                             <label>Name</label>
