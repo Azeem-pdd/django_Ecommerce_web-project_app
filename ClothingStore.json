@@ -1,670 +1,0 @@
-PGDMP                         y            ClothingStore    12.4    12.4 ¯    ÿ           0    0    ENCODING    ENCODING        SET client_encoding = 'UTF8';
-                      false                        0    0 
-   STDSTRINGS 
-   STDSTRINGS     (   SET standard_conforming_strings = 'on';
-                      false                       0    0 
-   SEARCHPATH 
-   SEARCHPATH     8   SELECT pg_catalog.set_config('search_path', '', false);
-                      false                       1262    49654    ClothingStore    DATABASE     Ÿ   CREATE DATABASE "ClothingStore" WITH TEMPLATE = template0 ENCODING = 'UTF8' LC_COLLATE = 'English_United States.1252' LC_CTYPE = 'English_United States.1252';
-    DROP DATABASE "ClothingStore";
-                postgres    false            Ñ            1259    49686 
-   auth_group    TABLE     f   CREATE TABLE public.auth_group (
-    id integer NOT NULL,
-    name character varying(150) NOT NULL
-);
-    DROP TABLE public.auth_group;
-       public         heap    postgres    false            Ð            1259    49684    auth_group_id_seq    SEQUENCE     ‰   CREATE SEQUENCE public.auth_group_id_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
- (   DROP SEQUENCE public.auth_group_id_seq;
-       public          postgres    false    209                       0    0    auth_group_id_seq    SEQUENCE OWNED BY     G   ALTER SEQUENCE public.auth_group_id_seq OWNED BY public.auth_group.id;
-          public          postgres    false    208            Ó            1259    49696    auth_group_permissions    TABLE     ‹   CREATE TABLE public.auth_group_permissions (
-    id integer NOT NULL,
-    group_id integer NOT NULL,
-    permission_id integer NOT NULL
-);
- *   DROP TABLE public.auth_group_permissions;
-       public         heap    postgres    false            Ò            1259    49694    auth_group_permissions_id_seq    SEQUENCE     •   CREATE SEQUENCE public.auth_group_permissions_id_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
- 4   DROP SEQUENCE public.auth_group_permissions_id_seq;
-       public          postgres    false    211                       0    0    auth_group_permissions_id_seq    SEQUENCE OWNED BY     _   ALTER SEQUENCE public.auth_group_permissions_id_seq OWNED BY public.auth_group_permissions.id;
-          public          postgres    false    210            Ï            1259    49678    auth_permission    TABLE     ¿   CREATE TABLE public.auth_permission (
-    id integer NOT NULL,
-    name character varying(255) NOT NULL,
-    content_type_id integer NOT NULL,
-    codename character varying(100) NOT NULL
-);
- #   DROP TABLE public.auth_permission;
-       public         heap    postgres    false            Î            1259    49676    auth_permission_id_seq    SEQUENCE     Ž   CREATE SEQUENCE public.auth_permission_id_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
- -   DROP SEQUENCE public.auth_permission_id_seq;
-       public          postgres    false    207                       0    0    auth_permission_id_seq    SEQUENCE OWNED BY     Q   ALTER SEQUENCE public.auth_permission_id_seq OWNED BY public.auth_permission.id;
-          public          postgres    false    206            Õ            1259    49704 	   auth_user    TABLE     ß  CREATE TABLE public.auth_user (
-    id integer NOT NULL,
-    password character varying(128) NOT NULL,
-    last_login timestamp with time zone,
-    is_superuser boolean NOT NULL,
-    username character varying(150) NOT NULL,
-    first_name character varying(150) NOT NULL,
-    last_name character varying(150) NOT NULL,
-    email character varying(254) NOT NULL,
-    is_staff boolean NOT NULL,
-    is_active boolean NOT NULL,
-    date_joined timestamp with time zone NOT NULL
-);
-    DROP TABLE public.auth_user;
-       public         heap    postgres    false            ×            1259    49714    auth_user_groups    TABLE        CREATE TABLE public.auth_user_groups (
-    id integer NOT NULL,
-    user_id integer NOT NULL,
-    group_id integer NOT NULL
-);
- $   DROP TABLE public.auth_user_groups;
-       public         heap    postgres    false            Ö            1259    49712    auth_user_groups_id_seq    SEQUENCE        CREATE SEQUENCE public.auth_user_groups_id_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
- .   DROP SEQUENCE public.auth_user_groups_id_seq;
-       public          postgres    false    215                       0    0    auth_user_groups_id_seq    SEQUENCE OWNED BY     S   ALTER SEQUENCE public.auth_user_groups_id_seq OWNED BY public.auth_user_groups.id;
-          public          postgres    false    214            Ô            1259    49702    auth_user_id_seq    SEQUENCE     ˆ   CREATE SEQUENCE public.auth_user_id_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
- '   DROP SEQUENCE public.auth_user_id_seq;
-       public          postgres    false    213                       0    0    auth_user_id_seq    SEQUENCE OWNED BY     E   ALTER SEQUENCE public.auth_user_id_seq OWNED BY public.auth_user.id;
-          public          postgres    false    212            Ù            1259    49722    auth_user_user_permissions    TABLE     Ž   CREATE TABLE public.auth_user_user_permissions (
-    id integer NOT NULL,
-    user_id integer NOT NULL,
-    permission_id integer NOT NULL
-);
- .   DROP TABLE public.auth_user_user_permissions;
-       public         heap    postgres    false            Ø            1259    49720 !   auth_user_user_permissions_id_seq    SEQUENCE     ™   CREATE SEQUENCE public.auth_user_user_permissions_id_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
- 8   DROP SEQUENCE public.auth_user_user_permissions_id_seq;
-       public          postgres    false    217                       0    0 !   auth_user_user_permissions_id_seq    SEQUENCE OWNED BY     g   ALTER SEQUENCE public.auth_user_user_permissions_id_seq OWNED BY public.auth_user_user_permissions.id;
-          public          postgres    false    216            Û            1259    49782    django_admin_log    TABLE     ˆ  CREATE TABLE public.django_admin_log (
-    id integer NOT NULL,
-    action_time timestamp with time zone NOT NULL,
-    object_id text,
-    object_repr character varying(200) NOT NULL,
-    action_flag smallint NOT NULL,
-    change_message text NOT NULL,
-    content_type_id integer,
-    user_id integer NOT NULL,
-    CONSTRAINT django_admin_log_action_flag_check CHECK ((action_flag >= 0))
-);
- $   DROP TABLE public.django_admin_log;
-       public         heap    postgres    false            Ú            1259    49780    django_admin_log_id_seq    SEQUENCE        CREATE SEQUENCE public.django_admin_log_id_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
- .   DROP SEQUENCE public.django_admin_log_id_seq;
-       public          postgres    false    219            	           0    0    django_admin_log_id_seq    SEQUENCE OWNED BY     S   ALTER SEQUENCE public.django_admin_log_id_seq OWNED BY public.django_admin_log.id;
-          public          postgres    false    218            Í            1259    49668    django_content_type    TABLE     Ÿ   CREATE TABLE public.django_content_type (
-    id integer NOT NULL,
-    app_label character varying(100) NOT NULL,
-    model character varying(100) NOT NULL
-);
- '   DROP TABLE public.django_content_type;
-       public         heap    postgres    false            Ì            1259    49666    django_content_type_id_seq    SEQUENCE     ’   CREATE SEQUENCE public.django_content_type_id_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
- 1   DROP SEQUENCE public.django_content_type_id_seq;
-       public          postgres    false    205            
-           0    0    django_content_type_id_seq    SEQUENCE OWNED BY     Y   ALTER SEQUENCE public.django_content_type_id_seq OWNED BY public.django_content_type.id;
-          public          postgres    false    204            Ë            1259    49657    django_migrations    TABLE     Å   CREATE TABLE public.django_migrations (
-    id integer NOT NULL,
-    app character varying(255) NOT NULL,
-    name character varying(255) NOT NULL,
-    applied timestamp with time zone NOT NULL
-);
- %   DROP TABLE public.django_migrations;
-       public         heap    postgres    false            Ê            1259    49655    django_migrations_id_seq    SEQUENCE        CREATE SEQUENCE public.django_migrations_id_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
- /   DROP SEQUENCE public.django_migrations_id_seq;
-       public          postgres    false    203                       0    0    django_migrations_id_seq    SEQUENCE OWNED BY     U   ALTER SEQUENCE public.django_migrations_id_seq OWNED BY public.django_migrations.id;
-          public          postgres    false    202            Ü            1259    49813    django_session    TABLE     ª   CREATE TABLE public.django_session (
-    session_key character varying(40) NOT NULL,
-    session_data text NOT NULL,
-    expire_date timestamp with time zone NOT NULL
-);
- "   DROP TABLE public.django_session;
-       public         heap    postgres    false            Þ            1259    49885    store_catagory    TABLE     i   CREATE TABLE public.store_catagory (
-    id integer NOT NULL,
-    name character varying(50) NOT NULL
-);
- "   DROP TABLE public.store_catagory;
-       public         heap    postgres    false            Ý            1259    49883    store_catagory_id_seq    SEQUENCE        CREATE SEQUENCE public.store_catagory_id_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
- ,   DROP SEQUENCE public.store_catagory_id_seq;
-       public          postgres    false    222                       0    0    store_catagory_id_seq    SEQUENCE OWNED BY     O   ALTER SEQUENCE public.store_catagory_id_seq OWNED BY public.store_catagory.id;
-          public          postgres    false    221            à            1259    49893    store_customer    TABLE     H  CREATE TABLE public.store_customer (
-    id integer NOT NULL,
-    first_name character varying(200) NOT NULL,
-    last_name character varying(200) NOT NULL,
-    email character varying(254) NOT NULL,
-    phno bigint NOT NULL,
-    password character varying(200) NOT NULL,
-    confirm_password character varying(200) NOT NULL
-);
- "   DROP TABLE public.store_customer;
-       public         heap    postgres    false            ß            1259    49891    store_customer_id_seq    SEQUENCE        CREATE SEQUENCE public.store_customer_id_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
- ,   DROP SEQUENCE public.store_customer_id_seq;
-       public          postgres    false    224                       0    0    store_customer_id_seq    SEQUENCE OWNED BY     O   ALTER SEQUENCE public.store_customer_id_seq OWNED BY public.store_customer.id;
-          public          postgres    false    223            ã            1259    49913    store_order    TABLE       CREATE TABLE public.store_order (
-    id integer NOT NULL,
-    date timestamp with time zone NOT NULL,
-    price integer NOT NULL,
-    customer_id integer NOT NULL,
-    address character varying(100) NOT NULL,
-    phno bigint NOT NULL,
-    shipping_address character varying(100) NOT NULL,
-    name character varying(20) NOT NULL,
-    name_additional character varying(20),
-    phno_additional bigint,
-    email character varying(254) NOT NULL,
-    payment_method_id integer NOT NULL,
-    order_status character varying(20) NOT NULL
-);
-    DROP TABLE public.store_order;
-       public         heap    postgres    false            â            1259    49911    store_order_id_seq    SEQUENCE     Š   CREATE SEQUENCE public.store_order_id_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
- )   DROP SEQUENCE public.store_order_id_seq;
-       public          postgres    false    227                       0    0    store_order_id_seq    SEQUENCE OWNED BY     I   ALTER SEQUENCE public.store_order_id_seq OWNED BY public.store_order.id;
-          public          postgres    false    226            ê            1259    91021    store_order_products    TABLE     ‡   CREATE TABLE public.store_order_products (
-    id integer NOT NULL,
-    order_id integer NOT NULL,
-    products_id integer NOT NULL
-);
- (   DROP TABLE public.store_order_products;
-       public         heap    postgres    false            é            1259    91019    store_order_products_id_seq    SEQUENCE     “   CREATE SEQUENCE public.store_order_products_id_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
- 2   DROP SEQUENCE public.store_order_products_id_seq;
-       public          postgres    false    234                       0    0    store_order_products_id_seq    SEQUENCE OWNED BY     [   ALTER SEQUENCE public.store_order_products_id_seq OWNED BY public.store_order_products.id;
-          public          postgres    false    233            ì            1259    91043    store_orderproduct    TABLE     £   CREATE TABLE public.store_orderproduct (
-    id integer NOT NULL,
-    quantity integer NOT NULL,
-    order_id integer NOT NULL,
-    product_id integer NOT NULL
-);
- &   DROP TABLE public.store_orderproduct;
-       public         heap    postgres    false            ë            1259    91041    store_orderproduct_id_seq    SEQUENCE     ‘   CREATE SEQUENCE public.store_orderproduct_id_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
- 0   DROP SEQUENCE public.store_orderproduct_id_seq;
-       public          postgres    false    236                       0    0    store_orderproduct_id_seq    SEQUENCE OWNED BY     W   ALTER SEQUENCE public.store_orderproduct_id_seq OWNED BY public.store_orderproduct.id;
-          public          postgres    false    235            è            1259    91002    store_payment_method    TABLE     o   CREATE TABLE public.store_payment_method (
-    id integer NOT NULL,
-    name character varying(20) NOT NULL
-);
- (   DROP TABLE public.store_payment_method;
-       public         heap    postgres    false            ç            1259    91000    store_payment_method_id_seq    SEQUENCE     “   CREATE SEQUENCE public.store_payment_method_id_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
- 2   DROP SEQUENCE public.store_payment_method_id_seq;
-       public          postgres    false    232                       0    0    store_payment_method_id_seq    SEQUENCE OWNED BY     [   ALTER SEQUENCE public.store_payment_method_id_seq OWNED BY public.store_payment_method.id;
-          public          postgres    false    231            á            1259    49905    store_products    TABLE     ×  CREATE TABLE public.store_products (
-    id integer NOT NULL,
-    name character varying(50) NOT NULL,
-    "desc" character varying(200) NOT NULL,
-    img character varying(100) NOT NULL,
-    price integer NOT NULL,
-    catagory_id integer NOT NULL,
-    quantity integer NOT NULL,
-    date timestamp with time zone NOT NULL,
-    no_of_visits integer NOT NULL,
-    featured boolean NOT NULL,
-    CONSTRAINT store_products_no_of_visits_check CHECK ((no_of_visits >= 0))
-);
- "   DROP TABLE public.store_products;
-       public         heap    postgres    false            ä            1259    49961    store_products_id_seq    SEQUENCE     ~   CREATE SEQUENCE public.store_products_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
- ,   DROP SEQUENCE public.store_products_id_seq;
-       public          postgres    false    225                       0    0    store_products_id_seq    SEQUENCE OWNED BY     O   ALTER SEQUENCE public.store_products_id_seq OWNED BY public.store_products.id;
-          public          postgres    false    228            æ            1259    58207    store_profile    TABLE        CREATE TABLE public.store_profile (
-    id integer NOT NULL,
-    name character varying(20) NOT NULL,
-    profession character varying(20) NOT NULL,
-    img character varying(100),
-    job_position character varying(40) NOT NULL,
-    customer_id integer NOT NULL,
-    home_address text NOT NULL,
-    phno bigint NOT NULL,
-    postal_address text NOT NULL,
-    shipping_address text NOT NULL,
-    zip_code integer
-);
- !   DROP TABLE public.store_profile;
-       public         heap    postgres    false            å            1259    58205    store_profile_id_seq    SEQUENCE     Œ   CREATE SEQUENCE public.store_profile_id_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
- +   DROP SEQUENCE public.store_profile_id_seq;
-       public          postgres    false    230                       0    0    store_profile_id_seq    SEQUENCE OWNED BY     M   ALTER SEQUENCE public.store_profile_id_seq OWNED BY public.store_profile.id;
-          public          postgres    false    229            í
-           2604    49689    auth_group id    DEFAULT     n   ALTER TABLE ONLY public.auth_group ALTER COLUMN id SET DEFAULT nextval('public.auth_group_id_seq'::regclass);
- <   ALTER TABLE public.auth_group ALTER COLUMN id DROP DEFAULT;
-       public          postgres    false    208    209    209            î
-           2604    49699    auth_group_permissions id    DEFAULT     †   ALTER TABLE ONLY public.auth_group_permissions ALTER COLUMN id SET DEFAULT nextval('public.auth_group_permissions_id_seq'::regclass);
- H   ALTER TABLE public.auth_group_permissions ALTER COLUMN id DROP DEFAULT;
-       public          postgres    false    211    210    211            ì
-           2604    49681    auth_permission id    DEFAULT     x   ALTER TABLE ONLY public.auth_permission ALTER COLUMN id SET DEFAULT nextval('public.auth_permission_id_seq'::regclass);
- A   ALTER TABLE public.auth_permission ALTER COLUMN id DROP DEFAULT;
-       public          postgres    false    206    207    207            ï
-           2604    49707    auth_user id    DEFAULT     l   ALTER TABLE ONLY public.auth_user ALTER COLUMN id SET DEFAULT nextval('public.auth_user_id_seq'::regclass);
- ;   ALTER TABLE public.auth_user ALTER COLUMN id DROP DEFAULT;
-       public          postgres    false    212    213    213            ð
-           2604    49717    auth_user_groups id    DEFAULT     z   ALTER TABLE ONLY public.auth_user_groups ALTER COLUMN id SET DEFAULT nextval('public.auth_user_groups_id_seq'::regclass);
- B   ALTER TABLE public.auth_user_groups ALTER COLUMN id DROP DEFAULT;
-       public          postgres    false    215    214    215            ñ
-           2604    49725    auth_user_user_permissions id    DEFAULT     Ž   ALTER TABLE ONLY public.auth_user_user_permissions ALTER COLUMN id SET DEFAULT nextval('public.auth_user_user_permissions_id_seq'::regclass);
- L   ALTER TABLE public.auth_user_user_permissions ALTER COLUMN id DROP DEFAULT;
-       public          postgres    false    217    216    217            ò
-           2604    49785    django_admin_log id    DEFAULT     z   ALTER TABLE ONLY public.django_admin_log ALTER COLUMN id SET DEFAULT nextval('public.django_admin_log_id_seq'::regclass);
- B   ALTER TABLE public.django_admin_log ALTER COLUMN id DROP DEFAULT;
-       public          postgres    false    219    218    219            ë
-           2604    49671    django_content_type id    DEFAULT     €   ALTER TABLE ONLY public.django_content_type ALTER COLUMN id SET DEFAULT nextval('public.django_content_type_id_seq'::regclass);
- E   ALTER TABLE public.django_content_type ALTER COLUMN id DROP DEFAULT;
-       public          postgres    false    205    204    205            ê
-           2604    49660    django_migrations id    DEFAULT     |   ALTER TABLE ONLY public.django_migrations ALTER COLUMN id SET DEFAULT nextval('public.django_migrations_id_seq'::regclass);
- C   ALTER TABLE public.django_migrations ALTER COLUMN id DROP DEFAULT;
-       public          postgres    false    202    203    203            ô
-           2604    49888    store_catagory id    DEFAULT     v   ALTER TABLE ONLY public.store_catagory ALTER COLUMN id SET DEFAULT nextval('public.store_catagory_id_seq'::regclass);
- @   ALTER TABLE public.store_catagory ALTER COLUMN id DROP DEFAULT;
-       public          postgres    false    222    221    222            õ
-           2604    49896    store_customer id    DEFAULT     v   ALTER TABLE ONLY public.store_customer ALTER COLUMN id SET DEFAULT nextval('public.store_customer_id_seq'::regclass);
- @   ALTER TABLE public.store_customer ALTER COLUMN id DROP DEFAULT;
-       public          postgres    false    224    223    224            ø
-           2604    49916    store_order id    DEFAULT     p   ALTER TABLE ONLY public.store_order ALTER COLUMN id SET DEFAULT nextval('public.store_order_id_seq'::regclass);
- =   ALTER TABLE public.store_order ALTER COLUMN id DROP DEFAULT;
-       public          postgres    false    227    226    227            û
-           2604    91024    store_order_products id    DEFAULT     ‚   ALTER TABLE ONLY public.store_order_products ALTER COLUMN id SET DEFAULT nextval('public.store_order_products_id_seq'::regclass);
- F   ALTER TABLE public.store_order_products ALTER COLUMN id DROP DEFAULT;
-       public          postgres    false    233    234    234            ü
-           2604    91046    store_orderproduct id    DEFAULT     ~   ALTER TABLE ONLY public.store_orderproduct ALTER COLUMN id SET DEFAULT nextval('public.store_orderproduct_id_seq'::regclass);
- D   ALTER TABLE public.store_orderproduct ALTER COLUMN id DROP DEFAULT;
-       public          postgres    false    236    235    236            ú
-           2604    91005    store_payment_method id    DEFAULT     ‚   ALTER TABLE ONLY public.store_payment_method ALTER COLUMN id SET DEFAULT nextval('public.store_payment_method_id_seq'::regclass);
- F   ALTER TABLE public.store_payment_method ALTER COLUMN id DROP DEFAULT;
-       public          postgres    false    232    231    232            ö
-           2604    49963    store_products id    DEFAULT     v   ALTER TABLE ONLY public.store_products ALTER COLUMN id SET DEFAULT nextval('public.store_products_id_seq'::regclass);
- @   ALTER TABLE public.store_products ALTER COLUMN id DROP DEFAULT;
-       public          postgres    false    228    225            ù
-           2604    58210    store_profile id    DEFAULT     t   ALTER TABLE ONLY public.store_profile ALTER COLUMN id SET DEFAULT nextval('public.store_profile_id_seq'::regclass);
- ?   ALTER TABLE public.store_profile ALTER COLUMN id DROP DEFAULT;
-       public          postgres    false    230    229    230            á          0    49686 
-   auth_group 
-   TABLE DATA           .   COPY public.auth_group (id, name) FROM stdin;
-    public          postgres    false    209   6ê       ã          0    49696    auth_group_permissions 
-   TABLE DATA           M   COPY public.auth_group_permissions (id, group_id, permission_id) FROM stdin;
-    public          postgres    false    211   Sê       ß          0    49678    auth_permission 
-   TABLE DATA           N   COPY public.auth_permission (id, name, content_type_id, codename) FROM stdin;
-    public          postgres    false    207   pê       å          0    49704 	   auth_user 
-   TABLE DATA           •   COPY public.auth_user (id, password, last_login, is_superuser, username, first_name, last_name, email, is_staff, is_active, date_joined) FROM stdin;
-    public          postgres    false    213   ‹ì       ç          0    49714    auth_user_groups 
-   TABLE DATA           A   COPY public.auth_user_groups (id, user_id, group_id) FROM stdin;
-    public          postgres    false    215   Ií       é          0    49722    auth_user_user_permissions 
-   TABLE DATA           P   COPY public.auth_user_user_permissions (id, user_id, permission_id) FROM stdin;
-    public          postgres    false    217   fí       ë          0    49782    django_admin_log 
-   TABLE DATA           Š   COPY public.django_admin_log (id, action_time, object_id, object_repr, action_flag, change_message, content_type_id, user_id) FROM stdin;
-    public          postgres    false    219   ƒí       Ý          0    49668    django_content_type 
-   TABLE DATA           C   COPY public.django_content_type (id, app_label, model) FROM stdin;
-    public          postgres    false    205   nö       Û          0    49657    django_migrations 
-   TABLE DATA           C   COPY public.django_migrations (id, app, name, applied) FROM stdin;
-    public          postgres    false    203   ÷       ì          0    49813    django_session 
-   TABLE DATA           P   COPY public.django_session (session_key, session_data, expire_date) FROM stdin;
-    public          postgres    false    220    ü       î          0    49885    store_catagory 
-   TABLE DATA           2   COPY public.store_catagory (id, name) FROM stdin;
-    public          postgres    false    222   Ä
-      ð          0    49893    store_customer 
-   TABLE DATA           l   COPY public.store_customer (id, first_name, last_name, email, phno, password, confirm_password) FROM stdin;
-    public          postgres    false    224         ó          0    49913    store_order 
-   TABLE DATA           ´   COPY public.store_order (id, date, price, customer_id, address, phno, shipping_address, name, name_additional, phno_additional, email, payment_method_id, order_status) FROM stdin;
-    public          postgres    false    227   ¶      ú          0    91021    store_order_products 
-   TABLE DATA           I   COPY public.store_order_products (id, order_id, products_id) FROM stdin;
-    public          postgres    false    234   @      ü          0    91043    store_orderproduct 
-   TABLE DATA           P   COPY public.store_orderproduct (id, quantity, order_id, product_id) FROM stdin;
-    public          postgres    false    236   j      ø          0    91002    store_payment_method 
-   TABLE DATA           8   COPY public.store_payment_method (id, name) FROM stdin;
-    public          postgres    false    232   ˜      ñ          0    49905    store_products 
-   TABLE DATA           {   COPY public.store_products (id, name, "desc", img, price, catagory_id, quantity, date, no_of_visits, featured) FROM stdin;
-    public          postgres    false    225   Ó      ö          0    58207    store_profile 
-   TABLE DATA              COPY public.store_profile (id, name, profession, img, job_position, customer_id, home_address, phno, postal_address, shipping_address, zip_code) FROM stdin;
-    public          postgres    false    230   ²                 0    0    auth_group_id_seq    SEQUENCE SET     @   SELECT pg_catalog.setval('public.auth_group_id_seq', 1, false);
-          public          postgres    false    208                       0    0    auth_group_permissions_id_seq    SEQUENCE SET     L   SELECT pg_catalog.setval('public.auth_group_permissions_id_seq', 1, false);
-          public          postgres    false    210                       0    0    auth_permission_id_seq    SEQUENCE SET     E   SELECT pg_catalog.setval('public.auth_permission_id_seq', 52, true);
-          public          postgres    false    206                       0    0    auth_user_groups_id_seq    SEQUENCE SET     F   SELECT pg_catalog.setval('public.auth_user_groups_id_seq', 1, false);
-          public          postgres    false    214                       0    0    auth_user_id_seq    SEQUENCE SET     >   SELECT pg_catalog.setval('public.auth_user_id_seq', 1, true);
-          public          postgres    false    212                       0    0 !   auth_user_user_permissions_id_seq    SEQUENCE SET     P   SELECT pg_catalog.setval('public.auth_user_user_permissions_id_seq', 1, false);
-          public          postgres    false    216                       0    0    django_admin_log_id_seq    SEQUENCE SET     G   SELECT pg_catalog.setval('public.django_admin_log_id_seq', 139, true);
-          public          postgres    false    218                       0    0    django_content_type_id_seq    SEQUENCE SET     I   SELECT pg_catalog.setval('public.django_content_type_id_seq', 13, true);
-          public          postgres    false    204                       0    0    django_migrations_id_seq    SEQUENCE SET     G   SELECT pg_catalog.setval('public.django_migrations_id_seq', 72, true);
-          public          postgres    false    202                       0    0    store_catagory_id_seq    SEQUENCE SET     C   SELECT pg_catalog.setval('public.store_catagory_id_seq', 6, true);
-          public          postgres    false    221                       0    0    store_customer_id_seq    SEQUENCE SET     C   SELECT pg_catalog.setval('public.store_customer_id_seq', 9, true);
-          public          postgres    false    223                       0    0    store_order_id_seq    SEQUENCE SET     A   SELECT pg_catalog.setval('public.store_order_id_seq', 30, true);
-          public          postgres    false    226                        0    0    store_order_products_id_seq    SEQUENCE SET     J   SELECT pg_catalog.setval('public.store_order_products_id_seq', 54, true);
-          public          postgres    false    233            !           0    0    store_orderproduct_id_seq    SEQUENCE SET     H   SELECT pg_catalog.setval('public.store_orderproduct_id_seq', 30, true);
-          public          postgres    false    235            "           0    0    store_payment_method_id_seq    SEQUENCE SET     I   SELECT pg_catalog.setval('public.store_payment_method_id_seq', 2, true);
-          public          postgres    false    231            #           0    0    store_products_id_seq    SEQUENCE SET     D   SELECT pg_catalog.setval('public.store_products_id_seq', 14, true);
-          public          postgres    false    228            $           0    0    store_profile_id_seq    SEQUENCE SET     C   SELECT pg_catalog.setval('public.store_profile_id_seq', 23, true);
-          public          postgres    false    229            
-           2606    49811    auth_group auth_group_name_key 
-   CONSTRAINT     Y   ALTER TABLE ONLY public.auth_group
-    ADD CONSTRAINT auth_group_name_key UNIQUE (name);
- H   ALTER TABLE ONLY public.auth_group DROP CONSTRAINT auth_group_name_key;
-       public            postgres    false    209                       2606    49738 R   auth_group_permissions auth_group_permissions_group_id_permission_id_0cd325b0_uniq 
-   CONSTRAINT         ALTER TABLE ONLY public.auth_group_permissions
-    ADD CONSTRAINT auth_group_permissions_group_id_permission_id_0cd325b0_uniq UNIQUE (group_id, permission_id);
- |   ALTER TABLE ONLY public.auth_group_permissions DROP CONSTRAINT auth_group_permissions_group_id_permission_id_0cd325b0_uniq;
-       public            postgres    false    211    211                       2606    49701 2   auth_group_permissions auth_group_permissions_pkey 
-   CONSTRAINT     p   ALTER TABLE ONLY public.auth_group_permissions
-    ADD CONSTRAINT auth_group_permissions_pkey PRIMARY KEY (id);
- \   ALTER TABLE ONLY public.auth_group_permissions DROP CONSTRAINT auth_group_permissions_pkey;
-       public            postgres    false    211                       2606    49691    auth_group auth_group_pkey 
-   CONSTRAINT     X   ALTER TABLE ONLY public.auth_group
-    ADD CONSTRAINT auth_group_pkey PRIMARY KEY (id);
- D   ALTER TABLE ONLY public.auth_group DROP CONSTRAINT auth_group_pkey;
-       public            postgres    false    209                       2606    49729 F   auth_permission auth_permission_content_type_id_codename_01ab375a_uniq 
-   CONSTRAINT     –   ALTER TABLE ONLY public.auth_permission
-    ADD CONSTRAINT auth_permission_content_type_id_codename_01ab375a_uniq UNIQUE (content_type_id, codename);
- p   ALTER TABLE ONLY public.auth_permission DROP CONSTRAINT auth_permission_content_type_id_codename_01ab375a_uniq;
-       public            postgres    false    207    207                       2606    49683 $   auth_permission auth_permission_pkey 
-   CONSTRAINT     b   ALTER TABLE ONLY public.auth_permission
-    ADD CONSTRAINT auth_permission_pkey PRIMARY KEY (id);
- N   ALTER TABLE ONLY public.auth_permission DROP CONSTRAINT auth_permission_pkey;
-       public            postgres    false    207                       2606    49719 &   auth_user_groups auth_user_groups_pkey 
-   CONSTRAINT     d   ALTER TABLE ONLY public.auth_user_groups
-    ADD CONSTRAINT auth_user_groups_pkey PRIMARY KEY (id);
- P   ALTER TABLE ONLY public.auth_user_groups DROP CONSTRAINT auth_user_groups_pkey;
-       public            postgres    false    215                       2606    49753 @   auth_user_groups auth_user_groups_user_id_group_id_94350c0c_uniq 
-   CONSTRAINT     ˆ   ALTER TABLE ONLY public.auth_user_groups
-    ADD CONSTRAINT auth_user_groups_user_id_group_id_94350c0c_uniq UNIQUE (user_id, group_id);
- j   ALTER TABLE ONLY public.auth_user_groups DROP CONSTRAINT auth_user_groups_user_id_group_id_94350c0c_uniq;
-       public            postgres    false    215    215                       2606    49709    auth_user auth_user_pkey 
-   CONSTRAINT     V   ALTER TABLE ONLY public.auth_user
-    ADD CONSTRAINT auth_user_pkey PRIMARY KEY (id);
- B   ALTER TABLE ONLY public.auth_user DROP CONSTRAINT auth_user_pkey;
-       public            postgres    false    213                        2606    49727 :   auth_user_user_permissions auth_user_user_permissions_pkey 
-   CONSTRAINT     x   ALTER TABLE ONLY public.auth_user_user_permissions
-    ADD CONSTRAINT auth_user_user_permissions_pkey PRIMARY KEY (id);
- d   ALTER TABLE ONLY public.auth_user_user_permissions DROP CONSTRAINT auth_user_user_permissions_pkey;
-       public            postgres    false    217            #           2606    49767 Y   auth_user_user_permissions auth_user_user_permissions_user_id_permission_id_14a6b632_uniq 
-   CONSTRAINT     ¦   ALTER TABLE ONLY public.auth_user_user_permissions
-    ADD CONSTRAINT auth_user_user_permissions_user_id_permission_id_14a6b632_uniq UNIQUE (user_id, permission_id);
- ƒ   ALTER TABLE ONLY public.auth_user_user_permissions DROP CONSTRAINT auth_user_user_permissions_user_id_permission_id_14a6b632_uniq;
-       public            postgres    false    217    217                       2606    49805     auth_user auth_user_username_key 
-   CONSTRAINT     _   ALTER TABLE ONLY public.auth_user
-    ADD CONSTRAINT auth_user_username_key UNIQUE (username);
- J   ALTER TABLE ONLY public.auth_user DROP CONSTRAINT auth_user_username_key;
-       public            postgres    false    213            &           2606    49791 &   django_admin_log django_admin_log_pkey 
-   CONSTRAINT     d   ALTER TABLE ONLY public.django_admin_log
-    ADD CONSTRAINT django_admin_log_pkey PRIMARY KEY (id);
- P   ALTER TABLE ONLY public.django_admin_log DROP CONSTRAINT django_admin_log_pkey;
-       public            postgres    false    219                        2606    49675 E   django_content_type django_content_type_app_label_model_76bd3d3b_uniq 
-   CONSTRAINT     Œ   ALTER TABLE ONLY public.django_content_type
-    ADD CONSTRAINT django_content_type_app_label_model_76bd3d3b_uniq UNIQUE (app_label, model);
- o   ALTER TABLE ONLY public.django_content_type DROP CONSTRAINT django_content_type_app_label_model_76bd3d3b_uniq;
-       public            postgres    false    205    205                       2606    49673 ,   django_content_type django_content_type_pkey 
-   CONSTRAINT     j   ALTER TABLE ONLY public.django_content_type
-    ADD CONSTRAINT django_content_type_pkey PRIMARY KEY (id);
- V   ALTER TABLE ONLY public.django_content_type DROP CONSTRAINT django_content_type_pkey;
-       public            postgres    false    205            þ
-           2606    49665 (   django_migrations django_migrations_pkey 
-   CONSTRAINT     f   ALTER TABLE ONLY public.django_migrations
-    ADD CONSTRAINT django_migrations_pkey PRIMARY KEY (id);
- R   ALTER TABLE ONLY public.django_migrations DROP CONSTRAINT django_migrations_pkey;
-       public            postgres    false    203            *           2606    49820 "   django_session django_session_pkey 
-   CONSTRAINT     i   ALTER TABLE ONLY public.django_session
-    ADD CONSTRAINT django_session_pkey PRIMARY KEY (session_key);
- L   ALTER TABLE ONLY public.django_session DROP CONSTRAINT django_session_pkey;
-       public            postgres    false    220            -           2606    49890 "   store_catagory store_catagory_pkey 
-   CONSTRAINT     `   ALTER TABLE ONLY public.store_catagory
-    ADD CONSTRAINT store_catagory_pkey PRIMARY KEY (id);
- L   ALTER TABLE ONLY public.store_catagory DROP CONSTRAINT store_catagory_pkey;
-       public            postgres    false    222            0           2606    49900 '   store_customer store_customer_email_key 
-   CONSTRAINT     c   ALTER TABLE ONLY public.store_customer
-    ADD CONSTRAINT store_customer_email_key UNIQUE (email);
- Q   ALTER TABLE ONLY public.store_customer DROP CONSTRAINT store_customer_email_key;
-       public            postgres    false    224            2           2606    49965 &   store_customer store_customer_phno_key 
-   CONSTRAINT     a   ALTER TABLE ONLY public.store_customer
-    ADD CONSTRAINT store_customer_phno_key UNIQUE (phno);
- P   ALTER TABLE ONLY public.store_customer DROP CONSTRAINT store_customer_phno_key;
-       public            postgres    false    224            4           2606    49898 "   store_customer store_customer_pkey 
-   CONSTRAINT     `   ALTER TABLE ONLY public.store_customer
-    ADD CONSTRAINT store_customer_pkey PRIMARY KEY (id);
- L   ALTER TABLE ONLY public.store_customer DROP CONSTRAINT store_customer_pkey;
-       public            postgres    false    224            ;           2606    49918    store_order store_order_pkey 
-   CONSTRAINT     Z   ALTER TABLE ONLY public.store_order
-    ADD CONSTRAINT store_order_pkey PRIMARY KEY (id);
- F   ALTER TABLE ONLY public.store_order DROP CONSTRAINT store_order_pkey;
-       public            postgres    false    227            C           2606    91028 L   store_order_products store_order_products_order_id_products_id_b83d7379_uniq 
-   CONSTRAINT     ˜   ALTER TABLE ONLY public.store_order_products
-    ADD CONSTRAINT store_order_products_order_id_products_id_b83d7379_uniq UNIQUE (order_id, products_id);
- v   ALTER TABLE ONLY public.store_order_products DROP CONSTRAINT store_order_products_order_id_products_id_b83d7379_uniq;
-       public            postgres    false    234    234            E           2606    91026 .   store_order_products store_order_products_pkey 
-   CONSTRAINT     l   ALTER TABLE ONLY public.store_order_products
-    ADD CONSTRAINT store_order_products_pkey PRIMARY KEY (id);
- X   ALTER TABLE ONLY public.store_order_products DROP CONSTRAINT store_order_products_pkey;
-       public            postgres    false    234            I           2606    91048 *   store_orderproduct store_orderproduct_pkey 
-   CONSTRAINT     h   ALTER TABLE ONLY public.store_orderproduct
-    ADD CONSTRAINT store_orderproduct_pkey PRIMARY KEY (id);
- T   ALTER TABLE ONLY public.store_orderproduct DROP CONSTRAINT store_orderproduct_pkey;
-       public            postgres    false    236            @           2606    91007 .   store_payment_method store_payment_method_pkey 
-   CONSTRAINT     l   ALTER TABLE ONLY public.store_payment_method
-    ADD CONSTRAINT store_payment_method_pkey PRIMARY KEY (id);
- X   ALTER TABLE ONLY public.store_payment_method DROP CONSTRAINT store_payment_method_pkey;
-       public            postgres    false    232            7           2606    49960 "   store_products store_products_pkey 
-   CONSTRAINT     `   ALTER TABLE ONLY public.store_products
-    ADD CONSTRAINT store_products_pkey PRIMARY KEY (id);
- L   ALTER TABLE ONLY public.store_products DROP CONSTRAINT store_products_pkey;
-       public            postgres    false    225            >           2606    58212     store_profile store_profile_pkey 
-   CONSTRAINT     ^   ALTER TABLE ONLY public.store_profile
-    ADD CONSTRAINT store_profile_pkey PRIMARY KEY (id);
- J   ALTER TABLE ONLY public.store_profile DROP CONSTRAINT store_profile_pkey;
-       public            postgres    false    230                       1259    49812    auth_group_name_a6ea08ec_like    INDEX     h   CREATE INDEX auth_group_name_a6ea08ec_like ON public.auth_group USING btree (name varchar_pattern_ops);
- 1   DROP INDEX public.auth_group_name_a6ea08ec_like;
-       public            postgres    false    209                       1259    49749 (   auth_group_permissions_group_id_b120cbf9    INDEX     o   CREATE INDEX auth_group_permissions_group_id_b120cbf9 ON public.auth_group_permissions USING btree (group_id);
- <   DROP INDEX public.auth_group_permissions_group_id_b120cbf9;
-       public            postgres    false    211                       1259    49750 -   auth_group_permissions_permission_id_84c5c92e    INDEX     y   CREATE INDEX auth_group_permissions_permission_id_84c5c92e ON public.auth_group_permissions USING btree (permission_id);
- A   DROP INDEX public.auth_group_permissions_permission_id_84c5c92e;
-       public            postgres    false    211                       1259    49735 (   auth_permission_content_type_id_2f476e4b    INDEX     o   CREATE INDEX auth_permission_content_type_id_2f476e4b ON public.auth_permission USING btree (content_type_id);
- <   DROP INDEX public.auth_permission_content_type_id_2f476e4b;
-       public            postgres    false    207                       1259    49765 "   auth_user_groups_group_id_97559544    INDEX     c   CREATE INDEX auth_user_groups_group_id_97559544 ON public.auth_user_groups USING btree (group_id);
- 6   DROP INDEX public.auth_user_groups_group_id_97559544;
-       public            postgres    false    215                       1259    49764 !   auth_user_groups_user_id_6a12ed8b    INDEX     a   CREATE INDEX auth_user_groups_user_id_6a12ed8b ON public.auth_user_groups USING btree (user_id);
- 5   DROP INDEX public.auth_user_groups_user_id_6a12ed8b;
-       public            postgres    false    215                       1259    49779 1   auth_user_user_permissions_permission_id_1fbb5f2c    INDEX        CREATE INDEX auth_user_user_permissions_permission_id_1fbb5f2c ON public.auth_user_user_permissions USING btree (permission_id);
- E   DROP INDEX public.auth_user_user_permissions_permission_id_1fbb5f2c;
-       public            postgres    false    217            !           1259    49778 +   auth_user_user_permissions_user_id_a95ead1b    INDEX     u   CREATE INDEX auth_user_user_permissions_user_id_a95ead1b ON public.auth_user_user_permissions USING btree (user_id);
- ?   DROP INDEX public.auth_user_user_permissions_user_id_a95ead1b;
-       public            postgres    false    217                       1259    49806     auth_user_username_6821ab7c_like    INDEX     n   CREATE INDEX auth_user_username_6821ab7c_like ON public.auth_user USING btree (username varchar_pattern_ops);
- 4   DROP INDEX public.auth_user_username_6821ab7c_like;
-       public            postgres    false    213            $           1259    49802 )   django_admin_log_content_type_id_c4bce8eb    INDEX     q   CREATE INDEX django_admin_log_content_type_id_c4bce8eb ON public.django_admin_log USING btree (content_type_id);
- =   DROP INDEX public.django_admin_log_content_type_id_c4bce8eb;
-       public            postgres    false    219            '           1259    49803 !   django_admin_log_user_id_c564eba6    INDEX     a   CREATE INDEX django_admin_log_user_id_c564eba6 ON public.django_admin_log USING btree (user_id);
- 5   DROP INDEX public.django_admin_log_user_id_c564eba6;
-       public            postgres    false    219            (           1259    49822 #   django_session_expire_date_a5c62663    INDEX     e   CREATE INDEX django_session_expire_date_a5c62663 ON public.django_session USING btree (expire_date);
- 7   DROP INDEX public.django_session_expire_date_a5c62663;
-       public            postgres    false    220            +           1259    49821 (   django_session_session_key_c0390e0f_like    INDEX     ~   CREATE INDEX django_session_session_key_c0390e0f_like ON public.django_session USING btree (session_key varchar_pattern_ops);
- <   DROP INDEX public.django_session_session_key_c0390e0f_like;
-       public            postgres    false    220            .           1259    49919 "   store_customer_email_1e001829_like    INDEX     r   CREATE INDEX store_customer_email_1e001829_like ON public.store_customer USING btree (email varchar_pattern_ops);
- 6   DROP INDEX public.store_customer_email_1e001829_like;
-       public            postgres    false    224            8           1259    49931     store_order_customer_id_13d6d43e    INDEX     _   CREATE INDEX store_order_customer_id_13d6d43e ON public.store_order USING btree (customer_id);
- 4   DROP INDEX public.store_order_customer_id_13d6d43e;
-       public            postgres    false    227            9           1259    91018 &   store_order_payment_method_id_a77344fb    INDEX     k   CREATE INDEX store_order_payment_method_id_a77344fb ON public.store_order USING btree (payment_method_id);
- :   DROP INDEX public.store_order_payment_method_id_a77344fb;
-       public            postgres    false    227            A           1259    91039 &   store_order_products_order_id_b344d9c7    INDEX     k   CREATE INDEX store_order_products_order_id_b344d9c7 ON public.store_order_products USING btree (order_id);
- :   DROP INDEX public.store_order_products_order_id_b344d9c7;
-       public            postgres    false    234            F           1259    91040 )   store_order_products_products_id_5e4e167b    INDEX     q   CREATE INDEX store_order_products_products_id_5e4e167b ON public.store_order_products USING btree (products_id);
- =   DROP INDEX public.store_order_products_products_id_5e4e167b;
-       public            postgres    false    234            G           1259    91059 $   store_orderproduct_order_id_87a00c28    INDEX     g   CREATE INDEX store_orderproduct_order_id_87a00c28 ON public.store_orderproduct USING btree (order_id);
- 8   DROP INDEX public.store_orderproduct_order_id_87a00c28;
-       public            postgres    false    236            J           1259    91060 &   store_orderproduct_product_id_1633886a    INDEX     k   CREATE INDEX store_orderproduct_product_id_1633886a ON public.store_orderproduct USING btree (product_id);
- :   DROP INDEX public.store_orderproduct_product_id_1633886a;
-       public            postgres    false    236            5           1259    49955 #   store_products_catagory_id_6c3abca6    INDEX     e   CREATE INDEX store_products_catagory_id_6c3abca6 ON public.store_products USING btree (catagory_id);
- 7   DROP INDEX public.store_products_catagory_id_6c3abca6;
-       public            postgres    false    225            <           1259    58218 "   store_profile_customer_id_55c892fe    INDEX     c   CREATE INDEX store_profile_customer_id_55c892fe ON public.store_profile USING btree (customer_id);
- 6   DROP INDEX public.store_profile_customer_id_55c892fe;
-       public            postgres    false    230            M           2606    49744 O   auth_group_permissions auth_group_permissio_permission_id_84c5c92e_fk_auth_perm    FK CONSTRAINT     Ü   ALTER TABLE ONLY public.auth_group_permissions
-    ADD CONSTRAINT auth_group_permissio_permission_id_84c5c92e_fk_auth_perm FOREIGN KEY (permission_id) REFERENCES public.auth_permission(id) DEFERRABLE INITIALLY DEFERRED;
- y   ALTER TABLE ONLY public.auth_group_permissions DROP CONSTRAINT auth_group_permissio_permission_id_84c5c92e_fk_auth_perm;
-       public          postgres    false    211    2823    207            L           2606    49739 P   auth_group_permissions auth_group_permissions_group_id_b120cbf9_fk_auth_group_id    FK CONSTRAINT     Ó   ALTER TABLE ONLY public.auth_group_permissions
-    ADD CONSTRAINT auth_group_permissions_group_id_b120cbf9_fk_auth_group_id FOREIGN KEY (group_id) REFERENCES public.auth_group(id) DEFERRABLE INITIALLY DEFERRED;
- z   ALTER TABLE ONLY public.auth_group_permissions DROP CONSTRAINT auth_group_permissions_group_id_b120cbf9_fk_auth_group_id;
-       public          postgres    false    211    2828    209            K           2606    49730 E   auth_permission auth_permission_content_type_id_2f476e4b_fk_django_co    FK CONSTRAINT     Ø   ALTER TABLE ONLY public.auth_permission
-    ADD CONSTRAINT auth_permission_content_type_id_2f476e4b_fk_django_co FOREIGN KEY (content_type_id) REFERENCES public.django_content_type(id) DEFERRABLE INITIALLY DEFERRED;
- o   ALTER TABLE ONLY public.auth_permission DROP CONSTRAINT auth_permission_content_type_id_2f476e4b_fk_django_co;
-       public          postgres    false    205    207    2818            O           2606    49759 D   auth_user_groups auth_user_groups_group_id_97559544_fk_auth_group_id    FK CONSTRAINT     Ç   ALTER TABLE ONLY public.auth_user_groups
-    ADD CONSTRAINT auth_user_groups_group_id_97559544_fk_auth_group_id FOREIGN KEY (group_id) REFERENCES public.auth_group(id) DEFERRABLE INITIALLY DEFERRED;
- n   ALTER TABLE ONLY public.auth_user_groups DROP CONSTRAINT auth_user_groups_group_id_97559544_fk_auth_group_id;
-       public          postgres    false    209    215    2828            N           2606    49754 B   auth_user_groups auth_user_groups_user_id_6a12ed8b_fk_auth_user_id    FK CONSTRAINT     Ã   ALTER TABLE ONLY public.auth_user_groups
-    ADD CONSTRAINT auth_user_groups_user_id_6a12ed8b_fk_auth_user_id FOREIGN KEY (user_id) REFERENCES public.auth_user(id) DEFERRABLE INITIALLY DEFERRED;
- l   ALTER TABLE ONLY public.auth_user_groups DROP CONSTRAINT auth_user_groups_user_id_6a12ed8b_fk_auth_user_id;
-       public          postgres    false    213    215    2836            Q           2606    49773 S   auth_user_user_permissions auth_user_user_permi_permission_id_1fbb5f2c_fk_auth_perm    FK CONSTRAINT     à   ALTER TABLE ONLY public.auth_user_user_permissions
-    ADD CONSTRAINT auth_user_user_permi_permission_id_1fbb5f2c_fk_auth_perm FOREIGN KEY (permission_id) REFERENCES public.auth_permission(id) DEFERRABLE INITIALLY DEFERRED;
- }   ALTER TABLE ONLY public.auth_user_user_permissions DROP CONSTRAINT auth_user_user_permi_permission_id_1fbb5f2c_fk_auth_perm;
-       public          postgres    false    2823    217    207            P           2606    49768 V   auth_user_user_permissions auth_user_user_permissions_user_id_a95ead1b_fk_auth_user_id    FK CONSTRAINT     ×   ALTER TABLE ONLY public.auth_user_user_permissions
-    ADD CONSTRAINT auth_user_user_permissions_user_id_a95ead1b_fk_auth_user_id FOREIGN KEY (user_id) REFERENCES public.auth_user(id) DEFERRABLE INITIALLY DEFERRED;
- €   ALTER TABLE ONLY public.auth_user_user_permissions DROP CONSTRAINT auth_user_user_permissions_user_id_a95ead1b_fk_auth_user_id;
-       public          postgres    false    213    217    2836            R           2606    49792 G   django_admin_log django_admin_log_content_type_id_c4bce8eb_fk_django_co    FK CONSTRAINT     Ú   ALTER TABLE ONLY public.django_admin_log
-    ADD CONSTRAINT django_admin_log_content_type_id_c4bce8eb_fk_django_co FOREIGN KEY (content_type_id) REFERENCES public.django_content_type(id) DEFERRABLE INITIALLY DEFERRED;
- q   ALTER TABLE ONLY public.django_admin_log DROP CONSTRAINT django_admin_log_content_type_id_c4bce8eb_fk_django_co;
-       public          postgres    false    219    2818    205            S           2606    49797 B   django_admin_log django_admin_log_user_id_c564eba6_fk_auth_user_id    FK CONSTRAINT     Ã   ALTER TABLE ONLY public.django_admin_log
-    ADD CONSTRAINT django_admin_log_user_id_c564eba6_fk_auth_user_id FOREIGN KEY (user_id) REFERENCES public.auth_user(id) DEFERRABLE INITIALLY DEFERRED;
- l   ALTER TABLE ONLY public.django_admin_log DROP CONSTRAINT django_admin_log_user_id_c564eba6_fk_auth_user_id;
-       public          postgres    false    219    2836    213            U           2606    99262 A   store_order store_order_customer_id_13d6d43e_fk_store_customer_id    FK CONSTRAINT     Ë   ALTER TABLE ONLY public.store_order
-    ADD CONSTRAINT store_order_customer_id_13d6d43e_fk_store_customer_id FOREIGN KEY (customer_id) REFERENCES public.store_customer(id) DEFERRABLE INITIALLY DEFERRED;
- k   ALTER TABLE ONLY public.store_order DROP CONSTRAINT store_order_customer_id_13d6d43e_fk_store_customer_id;
-       public          postgres    false    2868    224    227            V           2606    99267 ?   store_order store_order_payment_method_id_a77344fb_fk_store_pay    FK CONSTRAINT     Õ   ALTER TABLE ONLY public.store_order
-    ADD CONSTRAINT store_order_payment_method_id_a77344fb_fk_store_pay FOREIGN KEY (payment_method_id) REFERENCES public.store_payment_method(id) DEFERRABLE INITIALLY DEFERRED;
- i   ALTER TABLE ONLY public.store_order DROP CONSTRAINT store_order_payment_method_id_a77344fb_fk_store_pay;
-       public          postgres    false    227    2880    232            X           2606    91029 M   store_order_products store_order_products_order_id_b344d9c7_fk_store_order_id    FK CONSTRAINT     Ñ   ALTER TABLE ONLY public.store_order_products
-    ADD CONSTRAINT store_order_products_order_id_b344d9c7_fk_store_order_id FOREIGN KEY (order_id) REFERENCES public.store_order(id) DEFERRABLE INITIALLY DEFERRED;
- w   ALTER TABLE ONLY public.store_order_products DROP CONSTRAINT store_order_products_order_id_b344d9c7_fk_store_order_id;
-       public          postgres    false    2875    234    227            Y           2606    91034 S   store_order_products store_order_products_products_id_5e4e167b_fk_store_products_id    FK CONSTRAINT     Ý   ALTER TABLE ONLY public.store_order_products
-    ADD CONSTRAINT store_order_products_products_id_5e4e167b_fk_store_products_id FOREIGN KEY (products_id) REFERENCES public.store_products(id) DEFERRABLE INITIALLY DEFERRED;
- }   ALTER TABLE ONLY public.store_order_products DROP CONSTRAINT store_order_products_products_id_5e4e167b_fk_store_products_id;
-       public          postgres    false    234    225    2871            Z           2606    91049 I   store_orderproduct store_orderproduct_order_id_87a00c28_fk_store_order_id    FK CONSTRAINT     Í   ALTER TABLE ONLY public.store_orderproduct
-    ADD CONSTRAINT store_orderproduct_order_id_87a00c28_fk_store_order_id FOREIGN KEY (order_id) REFERENCES public.store_order(id) DEFERRABLE INITIALLY DEFERRED;
- s   ALTER TABLE ONLY public.store_orderproduct DROP CONSTRAINT store_orderproduct_order_id_87a00c28_fk_store_order_id;
-       public          postgres    false    227    2875    236            [           2606    99257 N   store_orderproduct store_orderproduct_product_id_1633886a_fk_store_products_id    FK CONSTRAINT     ×   ALTER TABLE ONLY public.store_orderproduct
-    ADD CONSTRAINT store_orderproduct_product_id_1633886a_fk_store_products_id FOREIGN KEY (product_id) REFERENCES public.store_products(id) DEFERRABLE INITIALLY DEFERRED;
- x   ALTER TABLE ONLY public.store_orderproduct DROP CONSTRAINT store_orderproduct_product_id_1633886a_fk_store_products_id;
-       public          postgres    false    2871    225    236            T           2606    49947 G   store_products store_products_catagory_id_6c3abca6_fk_store_catagory_id    FK CONSTRAINT     Ñ   ALTER TABLE ONLY public.store_products
-    ADD CONSTRAINT store_products_catagory_id_6c3abca6_fk_store_catagory_id FOREIGN KEY (catagory_id) REFERENCES public.store_catagory(id) DEFERRABLE INITIALLY DEFERRED;
- q   ALTER TABLE ONLY public.store_products DROP CONSTRAINT store_products_catagory_id_6c3abca6_fk_store_catagory_id;
-       public          postgres    false    225    222    2861            W           2606    58213 E   store_profile store_profile_customer_id_55c892fe_fk_store_customer_id    FK CONSTRAINT     Ï   ALTER TABLE ONLY public.store_profile
-    ADD CONSTRAINT store_profile_customer_id_55c892fe_fk_store_customer_id FOREIGN KEY (customer_id) REFERENCES public.store_customer(id) DEFERRABLE INITIALLY DEFERRED;
- o   ALTER TABLE ONLY public.store_profile DROP CONSTRAINT store_profile_customer_id_55c892fe_fk_store_customer_id;
-       public          postgres    false    2868    230    224            á      xœ‹Ñãââ Å ©      ã      xœ‹Ñãââ Å ©      ß     xœe”[nƒ0E¿íUdUÌ#ïn£R„‚K#%8Ò*»/ÌÃ3Ø>£œÖ×7¸Ï¦ß5m»»6SÓ¥áí‚›—^úˆëOÓwQC¸#\	\ïq2îW÷{‹šZÖÂÔbõ§ôˆƒ+ÐŠ–þ`¬b+æŽÆJ8¶bî¤¬„B+fÎÙê9¤öuFW‚/}Øk-E‘–€A{)¼,DLa &P™ÍÒÐÎæhÁ·•vâs"¤Ö6Œ
-!ñ` $èø˜î©ÛÅ~šoµ‹yKNZDc$#äYûh’œ2YìEKs &T›‹Ãã6Ž·Ô»Þ]Þð…‰º!ùþlòn`¾C«ÐïQ’ünH¯§;‚$|ûÂ„žÏI“wFHˆu@ƒŽ%å¯q¾æ,Ÿ¾4é¦SúyLª	 G@¥™Žá§ñPR|Mý4_Ýnz?£;ãËÇ­eÇ—&Ò+˜@ó&ß+ž›@ó*ì+A³’ü1âµÎ-°ÓÒ—&÷
-"ÓÌ™Ô+Ž™«Tæf™	º«¾o÷èBà®Z–¾*VUÅTråª©˜“¦B®2EÅ2’îgó~ÌÿÂË#N?©uëÝîúÊ~;Âª«)ó¶S,¾šRÏb;ƒÆjB^
-” ÷³¥Ô/íùÚ¼¯ë8˜×´ÑõœGÔûÚH]3þõá½ÿ!¬¹D      å   ®   xœ-ÌA‚0Æñóü¼‰º½ºÍ	AàÉ‚´!ÄR›e3Q‹êÓg<‡ÿááGPwlÊ†Ze†1¶Ò|»¼sÚ'4Ö¢“BÅa³ëV^V_T>6ù‹ó*¼¸UÖ=×4±S(Õâ`áfŽÈ4ßÇ>³1E#’ïªÒ!ýÙôR·í0WZž¯nqÓÓeü#`~QárNÂPLˆ±wÃø ‘1Ï      ç      xœ‹Ñãââ Å ©      é      xœ‹Ñãââ Å ©      ë   Û  xœ­ZÉŽÉ=·¾¢Ð'v2"råMž±4x|ŒYjRâ"ì¤Áü»#+“KeeÉi}h4øÞË%–É†OB>!V &€¥j)$€ù‹Pðð]³ož7Û¯ÕæýÇvº¯þæ¿þüÛc3›µ³ÇIõÛï¿ÿÂ7˜rÑL­8rž‡\Xâ¢!Q-$…ž‹†\Tâ’	òºl­œ3V…=þ¸ÝÌ^¦ûÝø‰¹TÂE0Q²–ÂÈ°ÇWvžK§\Ú¯‹„Ea®ì=—éqÁD ?{KFò\rx^²t^vÈÅg‚´îîQ¹T‰Ë%\('‚jC¨µ,Ÿ=z®é¼Y?¶Ç‹v9Ûñ¯??þ¸]LÛÇ_1T à’¨|#·(@¢@vB’ã%áè"¼üS+ˆ#ñ7¶ÂšÕù)PŽó¸&•áòÙËïÈúÙ‚þö¯–ÐYn@–½ýŽL¥dz‚XK.Ø]¿’é"Y?_ü5OÐÖF(«º•™!™)’™”Lò½Ö@º;3;$³E2›’ñh^©}nHæŠdg)C¨	!W¬Zƒ!1ý^vûÍªÝž_ =pÄp>¤ƒz]	þœ5¡žëaîf¼«çru·g¹Ô¹ø"¹¢´1Ä”Ž$¹1"Ô‚\"+1RBçŸË”6Êtá ™Ì‡b1F™Ò©‰´µPB¹°ºL9†b=F•ÒiŸôH$UHúLRB1+ñûö	¨Ö×Þ¬t](!ÿÚÎÎ"{jÒ™”¨Koc¥%[`«D‡PÕ¨S°'UñKeÐ$ãAv>&ó}³?+xèR	›àÛ‚ûH8IhŸÒÒguÍÇÍ~æN0”P,¡•Tt'	L%8¨¡¶ €÷’ TÂL„ª †Ñ@?öG’C.x
-…Ž©RÈ¼©†Äçàœ‹…Zqƒ„JHnÂdHÒXu»AÂ%wå´4cõø	›JX›ÈÔåFv¿òÏŠT¹ë^Ï/iË^M°§f7(Ëá~Òª	—P4µ‘t¨
-_¸®«/óÅ¾­vŸÛé¢YV³m»ÛùÝQ`B¾FÖÜ¶H¨àXß/›é§jºYn¶í¬ªþó´›/¶ûBI—”ðªÖÈSœå»­°K™ê€÷òÂ±uø-v=Ë7Óù>¶ý®æ;@Òá¾n^ÖÍnõò<o–ó"ÏrÈz˜7/®§ˆ
-ï^æÍjÕÌª·ßÚvU½ý´mV9ûÒÍ}&¡ó-]ÕÄMø`Ü›Ž¥éX‹°	Ju•Ÿ0z¹ÂD]N~äj¥H¸0ÔÂ•Háœ€<ÈYÁËã!Áû=‡¸ÔéàÇñ˜â»øVÂFû¯/à)Áû 1ÜŒÔ1Çñ2ÅK¯o‰‚G´à*…ëÎ'Y¡Ãñ¹xâ­·¼èHéƒå'0)ãà÷»À-!¬lB'i¢l­5Ù0‹—øŽëé‡£óõÊ‡£Ö"æ Žh‘°ÝRPkÇc—‰Ý9K0V\þ¹zu%H@"èûiçî$©{Ú;F^	î A©„ö5MŒêN2‘àAŸJ‹1^/qJ ññ‡¯[ðøH&v¸Pº«w¡vßÀ­nÿ–Âõ˜žÁ×r›!·’<«JÎå5Ü6áVÝ,''¡Êr“ç”}þ‰Ï?ýpkæZÊ	ëtUF¤Üª[çŒÈsVe ‡ìj4ºŠ]¤7 ±½›S6!ÆG?Ü"£¯Æ»ùÓf]}ß.¿¶Û¯¹ç»­¡!•ò[YŒæåcóíÛÿ¦ÌWä	Ÿ›V	Ê@8	,„:GÆ—3U;P¤)tëÍbÝÎuÐ½Ž±9P¤S¡½?jÒ’k t|û:~Ô¦eSìxvçvélýÎõpäKŽÒ5ð-`ì–‰Áñ(+R”é,¬Súð\˜U³ÐÃ™.ÅlÍÃ‡•6öÆœæaVØ`É]uíyÄwZÅYG?ü»¶ë.&»Gk™˜Ó«õí—êív»øµYîŽ0•‡YÐãoín_ýÔ.—‹õóvÊWbö	Âr8ë‡†ÍóbÚ¬«fê×f€ê²ñþGÛì_8ëN3‡5C1`1oŠð*±Èc‡<È£:*R7ñ¸!q­å´	6ÝgÍzúµšµ»Åóú;wb¨$‰wŽÜ¨}Ø|ø°›s•ª|¡
-sÖ0ÔðÈ¿ÔÅÇÛ÷Í’«¡—ÙW_ûyµ\<Ï÷ï—/mõ±mÖ7+bªÈ?XaAŒî*Â)K?(±ÑVÅ’ùîe¹_<Ê÷+Î_žK!gG×UI‹èæ]ìðlúßc¸³\ÔqvlÒÈ×å"Ž–OÌŽDçI¸˜†çGncQ~ä1—xàòÞdö™¹³#‹Ë³h2&ø÷ß–mûéëéÙÂ7eâ>x'<\Â›Ë÷Ãæä‹¾ê‚@Ð%"5âc"‡Ìs°Ýµ»{Ýb
-±{"¢ñ»)„í	×œm!hO,pK!ZO,â–B´YÜ$PYë¿Œ¥ò
-’BÜI®	[(„í‘D]_ 
-¡{$£[È
-1|$»¡Pdâ˜egTüöîpÕs‡ ™î#©„ÌD­GÚÃ7F'ÿž"3‘ÚGB	™‰Î>R˜	É’©ÈLö‘¶„ÌŸGú±CÇÊ[@f"­Ô%d&¬úHUBbè„”9ËXˆ Žò¸Büœp˜Ç¢Ç9é_ÙdqƒØ1>á¬t.LX:êÇŽÿ_˜î•BIc¦·1æž~š/>æ¡¤â‘Ø—¬Ç¿VßmVŸ—íþ`â‚*$ªþqŠjM¿Ë¤R¬æ‘R˜ðš¥X'º„,Å:ÉKÈR¬S?îT÷K²1üóÃM§¾ßíÙïÎS§"Ê$ÜÓ\tß÷1©H÷5™ZÝq'v(‚|\
-x/wéçŠñ³Hž®¬ÿüÔ¢SøûªY,µõùoýæÍ›ÿÉlq      Ý   “   xœMŽÝƒ0F¯áa–uî÷]–,í´‰-Ðß^25ó
-8ð‘ã@”8BïÕÄ3^vÐ¬æÈØm 2…Ö«àuÄÁÖ7ð!§±¨=¸ƒo:Bœ“H¢‚•L­âsšXö=µ˜Î5Êq@w‰¿¸ì:÷Wù¦ÉŽvÙêçlÉOŽ:R@×7q|ŸqØR/      Û     xœ•—ÉnãH@ÏÉWä>h¡¸Õ¢o@%-ÀKZ¶¿V•cZK#™KI]E>’exx>ÎÃá|þxNÎ9èÆÃxûÝ:„Ž >k]jrÒ?Nñ¡¿œ~03„˜	zè_öãákD¢_6»ÝñMÏ9}tÓ°?þ:ýüc×¿¼lÆð€à1Ç‹AC¹®>ÇC÷ºëßºçŸÇñY°‹<xÈ±ü*[øyšëºü—îÐï‡íP‘A$‡
-·üa×ïÎÃÔ½Ó~<ò‘2ßíû?Ýn8¼ém…
-Z	¡*ÞBÑ5Ôå¤?†}?î¾ŒBRò”nQø>JþQŽs|?o§'ˆ)éw‹!÷1výéœS?êÍ.»í¢‡ )AàÄkr]Æé–Ý’ö.çl;†ŠÃE0=Ãõ$¿ûÝøÒŸÓ©˜¦ãÔí‡Ó©ûKÝ£c`_ÂÑ-\ÜLÎYŽÚRÚø)­Rô­P>—Hò	Ü5ÒÛt¼¼/JB z Ýå]34tïÓñÏÇÛéIÚTÓs“ðþR¯ãôÍ[%v@Efˆ§áú©_NŠä¨ª—NZÛá+§µÀb<:cn}¬w¹<ŸOÝsîßŽÓÇfÐ»C¹;‚¡:“2à¡ƒèd×–z4œW8Á&Ž^k^q2\nGîž/úÛ½Và8½äÉr½Óf0âèR1
-Ù‚ùõYÒ6/•C1<Ìpì\ÞÄµ¥êBñ†Ç5î·qfCÁƒáéÿ“}t±ÌŒ· ¹©fg ÷—bJ>p­†I¨Í´Äa™à–¹qÂJÈ|Ì}t‡S@w3ž ZÂ]ã%…ºœÈLZã¼Ä¹E¯ås¡ŽL2W8»ÎÐ:jD¯UÚ€LD% 3[ ÚŠTw!™xà×0-aj1”‡Eª7ñ äš¿Ž»Ïõ =¹Ð’´5Y$®2fÜÛ5ušZà¢ùŠMÒÿåâ:™mf¸túî¸Ãå	|‹Ü:×°D©“‡Ì3tŸ²Îzõþ	¡QüH›¯‘;Æ‹¯¾˜nÚ¡_âÙ8jô‚KÖÙtCœÝÁwºÐa‰kÉ4ƒQ ÊÎ¦Ò·p	M$N¾Ã¦²5êáØ_»ßãi¼«Õ8i)ïø\`Ê¡Ì²5ÉðP¬Ñf–ˆËÀ`“ý
-G·ÀÑåäKDŽõijÒa˜áñ^xÅãUx–&ˆµ_ØüÃøm<&ý‡‚›˜Ö8/q4º6ÈÔÃ›ä–8ÎpjËT_à+nâ¬p”ŽRš]g¬+wpÇ%[Õê‹EL<¢Nn“+Þ¢.¹’:1ñˆ×8/qÖì5!©øõÓÍ:’5¾¼{;z+_;_Ì:òK<IšájlÊÎë·†XÇbÖÑÌ:#y^ÞptyÃ0êùBq^Ì:šY—7¼®!ÃáIÁ-™õÓÍ:Jk<-ñ”[žX°¶Œ˜uì–¸€Ìp½¸×›ç«ubÖ1,pÄùáóáA?]¾~—ôfÏ¬+ï0mt9ëbÏÓ25“¯ÏmoÖ1-p çïqíVçµô$MTýæhÖ1¯pÂ®»]|ƒI[¦dÞ›u,Kœf¸ZWÖkÐÇÑ7ëØ×Mq¸3Ð·¢Íîô}©¯I3ß8Ø”~úóe^Œ–R15.5ºãUÚtã8_s¿.ýá<ž?,‚/{VÓòŒ×ÉP"˜q<7ÎwyRÏð¨ÏpÊ×áÍ8q+ü^Ø‚«°ê;ê·¾kÑÌ8®5£{<*Ýòº ˜Ø—nfœà
-¿T¯ƒJ¢nãòÆfœÐg™^»MG»F§o¨´	'¼¤Ïéœ6}^4œäZº›ÇÇÇÿ Dk‚      ì     xœÕ˜Ù®£ÈÒ…¯»Ÿ¢î±E’Éxx`c°Žd1ÏóÌÓÿØµ»†Ý§àH–R¾±>­X±"Â	Ó±1Ê‹,òl˜}\VKW}èY}ï&î_ž<êñª9QO¬¸Ó¶Ê„ZÙ;ü,®ÑþoÀ¦3ÚfºÚuµëg{zÞÚ][:Æ1Ñgk˜ˆg¾¿Ž×óM`nîÒÒMÙ|¾`ëœ6ÆJ±AW>[xÛG†ïÁ]!I2_Ÿµ{ô¸åÅõÈÇªtae©2UÏK~³kÅ@œo”¨jXOMÃý!!ÌéCuO\üT°ú¤g×:ï†miÛ¾o¡cD»í6™üÛ%Uy¯þ"p`8‰áÔ7€s€à ú ‚$˜ÿÃÉ¿Ù.G.]ˆš
-wýÆ«m—Éó>	ýp Àÿ¦JÙ¥!'v›áb“ö¯SÑZÊäÇè+„«Í$JÇ| î ZØÚüT‰Å þXTZ>ðƒ%YHÀ—Jìªp&¦ªƒ.ez<uÑ”5 sl»pƒñ¿«„iC‡?Ô2OïF^©£½ÓûfRtIv?d³ÑÍ¢íWÐ)ú²>ÖâÉ0?5	ScqçŸZG¬ÈÚìs9œ[?†çˆÉ»É7“¢‰§ŸL_J„šØ—]¡.a’nE]ªæ—ƒÓå4•šx=ìÉŸ¨ã-HÁþNÀt£;„+3}.›TÃ¿|Õë!'Ðö!»>k—·ãM\ª1õ‡YËf¿ß³-6&{X3a?}E‡S ? NáûR¬h»˜¦ÝÜ)˜Öwºi¨ð žYºê Ó:øË›äØ5Ž¸M€Ô‰$J1ð7…'pyi\yïr•cØ
-së¯n<ÏO¢èŽvV‰brƒ4|¡ $‡Ã’!qœzQ0aM4>Ò	jPKxŒ‘o´5¹õÜFý)üŠc¢ë‘KdbÖÆ;žób„ãíl¹™¬iNúÝMÊ¸D_)(Q€‚ˆ /Š€NÊ*#&Ü 5u§AS6£.‹ðÃÌ=EìFOX•.x0f¸ 5MÕ½g”«R=ôiûÞh•/qûÁ,ˆ|{¸GLÝiYÓ£©q°¡ç‡%ú¼ªÂ	þÂâk‹;™+q>ûÏc;XÈKW˜' ;Û%lVð†´j³Ê»¾ñ_|Á¼ò†`9-¾`Xü7d@‡uB9kEhBA÷ wã~,„`1ý‘¢'¸Yo°3áí;c[ùìÞÌè Ø÷Qi^ºR²þb*ÍÉ~œ®5úB!G04dùîgº'›À¼ÐžÃ©¬ÓÅ•—SÞàþP—Ù)»WçT7á^öÍ®ƒ#ÍúBbŒÍv†w*¯1Žcó•qp©\ÔxS15m]“÷A56Þ\‡lç,áänn¿)LCÆ¥¸¤¥\˜lB&¼,‘¶n¤ø¶¼Ö¿¼Àv)Ã‰š%”ÑaÖŸ¡ZÄ}s­{z«fò²CxŒnêU©ùßÀhŽ">I‚7WÊPKç&tÖ’½Ò-žfYmRûÞ˜ö¿Ô9íu²]´?s¶;S»øÁ_Ý¿wìŽäŸLšj}Ò2KÙ)P„Ží
-™?2'¿-c‰$9H – ÔÛ¯mœ*ð.í¼¯¦ø±¾e»D[µî)Î*ç×n×ÕÁìÇR}˜¹D°röøjVa¯ÊÍür8Î!ö0,û–¢v,/À#&lÆªŠfI&Ò9v˜6Öô{‰â_K#-oòùÝùüüZ².æHB9ÈrÞÜ³eqÙ‚ÆtÙSç}Óž)óLœêÃe
-ÐïŽ^ò¼Ô‚ˆd	â
-ðVEÕÛ½vI<eáRãTÌ(.c"«ÿ¨–¦s˜@n77‘·2XRO`}L½=Y#°ïñuu<™
-sL·d­ñüWµ G²K_Q~×Ìéí¢óa¾|D–E@;NŽšžnŠ,&Âî‹\·Oy¤Ï÷ò‹<ç0}u*IóÜ•[i^'ð¸~`Oè®Ï©fÔwÄª>3ºCZ{à—AÀ¾À âpôAGè6jÌ6w½Êï<ÚZÒ¯¢˜&Ês·ï"*þwÃkCd›É%Ê›¤¸¢4~¾óëõ¿‡‚U$œ;MýIÉ;T€ˆuõD•Ã½)º"ÑµÎE;µühtd†ÿFŠ^ÙÒ{EPßIÃ6qýŠÉ¦¬³Ç|¢BoÂ¤E†gUõIúoÇ­Jg‡‚Æ­YC¸—Á2šƒÆ·‡pe°BÓ)b­#W06!¸?Õv£	Ì @|[èw ’@,z;«ŸU;™]¥.^’!D6É4•¥-¯wþí,qˆÜ¥G¬íX:¯´Ê[ö þ
-½þGFò‡ŒÙ®@)GGéÍë§·6ÆÉÑiUIiAKpCïVF”“ŸTìZüæDöíDðA4ÂßNœ{ÇÃÉ4h8•sçÙñà×-ðÆ”¬g«÷¾nlØäš—¬OÙUfæ;ßmO+&æ-ÔÀ˜N¹Æ%†`27ÊƒqB w!s½Ÿâ€)’©°a·(<—ÏóÞKÉÂUtwÛƒ`gÍörû¹ÊÌÊ£¶?+^Ñ
-¦j
-¦ŠØHÖz}“Ç€RAÈD¶1±Nã6Îk*âlN¹ò‹ÁxÐÑ•”ªL÷ãô”L„‘KÍ3‰X&ã™‰“¹Fz;íŸÆmÿ$O¨ÎçÆ!5ÒŽ4ýÃþ—>~_Kö.}ÌàË`Ç^6º¶—n_;ˆêÊ‹ûpF¯cÓ¦+ô]½+Þìõn½Ô×Rc£Ù>Ðy´+–p´’duAÄzã}šî ù_*uP	~½2vØcJ—ã†Mëìì/);ÇýZ0®jN±¤}ßÌø5¬¯úN„ÝÚ˜(áúÔPkÓ™+Âæ(Zl£žÖA0åJXmÎÎ¶’XÓ”UËŠ’T8•± ®nÕ%ä1SÞQà®ý¶ßVq#{Ö9¢á>ïZrf×dÆpOê™Çè¾UL7ª»@6Åz­yVâóƒ¾Ÿ’°<½YÈ`õÎÂå7¨†ýÞtüå òk”ZIß{]–UˆB!îõi–’Ÿ<$§pÅ+êù¹9š•†„);ê¹Ðìî›MtÔ2P
-+Æü#!4ÃõÒ­Wª(Ö(V‰èvsvRÞÀM£ÝØ~È	zÎÒ
-Žøú¶âdƒat.Î±Æ¨Í.nÖs¿—¨}w”gÅéž*i°O+(é¤ô&[ŽÁtfVnO²,7nÉD)Ã»—gÕýã‘KÙþ^šØ16Çí>ñó={ðçWúDìjâïxÕå²:„¡é–\°ùA9¤‡¬¢¼“T"?Î§]y
-~¦Ïry½öEÀ‘ÌrŸ"ŠzïÎL]vnÐôIÕa<{mÑmN€e­ùÁ—8\ÿjEüâÊ{{[¤]ßz\mÓ±?œ=c?¤çóJAA”ÎxÒ‹“ëž0T5mB>ýƒFc8úöÚé—&Á?H/›ý­$K?J½žÌú¹ñý a»y˜Æ¹è¿¢MÚ´ ½g_û’Mtüù*ýHó¹‹$T¤y3ª£c‰èn“f@!M®4ž•Ë1xŽW]·êŽ·Ð¼wÎå€ÌÒ×ä;ûe×fÈÙŸB‚Nº$­f7ÈPPŽ€¶“¯Ðo%½¡e{›ÎŸqü™ÜÈUb®&··Ð.´Çö0Mj-Ù»ÆxÜÏÁzLøMU\èaq­'À»|!$—þ X¿ËÊDI&Lç±9òPl5T–Ñ#EgIEV¾Ç~öMÝœB‘¿-}“‚Â˜ˆ‚`G2tÿˆw!ú×íØ<ÒˆlÆÄmÄœ/‡­5—æNµsÇkÃÕÐ­A\ ïA†$6äÍw»¦^ßÆz6›\Æ÷]+ù’àËÒº…›ém°/é·Ø¤âX ‰q3CVÍ*ð„ÞYo¥âé¬ó³gm™„[x342h¡}aÛå€*¼q|Õë“Xô“7mÇ9f|ÍŒºÆ¬YÚxª‰x{Ýtd9`MäGð‘û-qÛ±ŽuV~f7ûÚÉ¥ÂÌK$õž×¸:X‘¹—Qi³$Êi*±ð úiþsòóçä»_ˆyZ¿rx7N¤°–¶›«ä!/Ù†EYÆð?‚{T­Wz!Í>ÅÇ­I¹ÛVÖfŸXïEá>zrO$ÔÅÇBêºDPåQñfëDuX¬-Œ¼ÒÏœtÑIˆêUc¢vÍFQÛZ¿IWÍ/šÖ5ö‰!ï·^v©·ø…|l-÷ae±J-ã¯ÌÃ3~®žJ^=!W6ÍÝ/[/¢]¥ïéÍ¡ñeÙ¶­UÌ‚D’|ˆLQÅ¢úil×ÌÅÀÛqKR#ðX†ú¾áXÛ‡‰“FQW£Ñ*§È¯ö†âô?°õj}à†]¤§OÓêôM÷¬Ò¦>OoƒúÐXÝónUdçj¨çÿuž-™ƒS	?H@¿/÷ÔaÙ²÷í*Œæ"ž¡»Ä$Ž2°fùL&ÿöÕÑ–4b7êš¬îKÐ¼&„ëu¹Þ9gMPe…Ñi…>®b¶³°ŠX—³jE1À²›G©D¦CŸËh.`j¥ØüÐï[x°&;œyŒîhÿâìµ¹¾÷ÚcY+‰P+?ûRæd÷[+Fm*—vÈ˜ùŒQzMºÞ:2¨ûºžÓð(\ ˆÛxssÖy:_3§ÞÅ¿÷òÕó±è·iáƒk³HIÕ£î¼ÆGÑà¥ßb¢5Ü«‡0Ê X%’¸ušú½rí5ÆÞ.# ùdÿùøûï¿ÿ)~.y      î   ;   xœ3äLÎÈÌIQPSpJLÊL-æ2âôMÍrÃósSó¸Œ9Ý‹32óA"N©‰¥%•\1z\\\ ¶ÄL      ð   —  xœuQ]o¢@}~oMÊ23ð`²*KJÕŠÍ&›A>aFÑÊ¯_Ó6M›¸o÷Ü“ÜóquP0Þ²”]Ý³ã'úU
-ÆëÇÍ^€¢4tL1hÒ*+ô¿í–é˜¨:"BµÊ~Çñˆ³ÞKªÎVò¸œj‡ç`DüU<ÍÅ›ã­³cÐE£ñÌ¼él³¤L°>Ï`Õ‘	 ÞÁû,eûÝ4(¡StßGpØÖ‡8Ëæ«½9ÛÉª›<Œùmïš'ûœ*›´cž2÷ÒÓpR#As÷Ë‡D·¬æ€É½ü¦üÁSÓ‚ÿ‘ÆïÐK?gîZ¨X3úuÌOžœñb1_w²±ótU¼	¿4]«\^¹8‡VïŸ;A£©®¤_¶»z•éò’“À¯ÎÜO^d'0Ýy›¢{hÒKèŒ'~<ÔÐÌ¡BÀußIÖÞ’”ÛÛO?Ð&·,˜Ü—Ð›Å‡"Þ…$Q­ÁˆìÑxô,¿Éª(Ø¿nÎå8þ¥ÎÛ:M¤»K(t§óà«Ä?Š¢ü£	¶Ü      ó   z   xœmÉ1Â0@ÑÙ9Evh;©	8'èbÑª­”à*U‘àô€X‘þô1'l|jˆ-†.`×²#Â3§ƒob8Ã4Ëk±Ue8Ú,³Ö‚Ç˜b¢Dÿô©û]6[öeè¯ß~ï2Y²»iY×ªq0½3Æ¼.ã'þ      ú      xœ3±ä42ã´à25 ÑÆ\1z\\\ "Íî      ü      xœ32ç4æ42ã4æ2²à4±,¸bô¸¸¸ .he      ø   +   xœ3ätN,ÎÐÍÏSpIÍÉ,K-ªä2âÌJ¬ªŠOŠsÅèqqq ÓS
-Ü      ñ   Ï  xœ½•]OÛ0†¯Ó_q¸žÜå“Rî¶!m Û Q¦I“ë8[ÇÎl‡4ýõ;í(ÕÊv7•ç}Ïë&AAë çVÌä†[¶ÆŸx³¦³ÐrÉtÅÁiÐZÑ•P3°N³Ð{*$Jœ6Î;p¥°~m!qµ°%t~+©¡Ìq3jÁìÛÊôÏ4'Qv8¬Õ,ÈÒqi‡qDÂ#eGÇqz†oÂ,H³ÀÆÁTR¼Ô–Ú8h…+AŠYé¦²á0çTÙ¯[PEr­%ïÈõ5ùv¹¼Õ;Ò([KjËá¼F”ñ8Hæe´‹âI7$R°E¶1e<‡k²‘ßpÀzž)|wºFÖ¨µå@U§÷e£*?ÎûA+¤„‚s	µÑMîQÀJ¼ã*•@Èª™’P-VïOVç“ëÓ§TIoPò7ƒ†išÆáÈÃEA1ˆƒ‹F:A˜–Ú Ôv_µ¥p¦Tz,pjt‹ºš
-EÐ
-ª}{‡ð¡älÑ{¥×¶=ª£‹‚ÛŸÙÔ†
-Ë¬ñ«VT
-×õ“›õRëÅv/Æa:J²°ïÅ´G÷õb4FGk+9Gû:_Û¶µk•èˆ9	£Jže·7Om;|¾‘¥D­¸¾(ÊWî‰e§Î#ù¹Í"†5Hºµ
-
-íµÖ5&ªæLêÖã?ê/¸Ý²ð¹HöNýF?®ñÚað£„_Moç®¼ÂÒ­—‡+\·'·JTx©hŽ?ñ*nÏ¢ÉäðëS­ÒñÞ÷Z%!úž®“»iÐ­È¾ìË3Çf!5Ï&øú‰™OºöÞ„—ùr¶“Ô#ûGR34>[Ã’/…/éÕ`¼–Q#©ÓäËttóqÒ³ïvÇÿzsR$9
-ððÿþ<¯ÇÆZ¼„Ð­ÈröùJ.G'ó»8ŽŽ|£}qLl±ÃÁ`ðým~y      ö   Ç   xœmŽÍjƒ@F××§¸Gše…t!º¹Œ7ÎÔù	£"úô5ÙB×ß9œ/Iaö££«±Ud€ËÁ;-{¸Ó†w‰ØUsýåû¡uv=‰ïÙnï-,ÕJjrÃj/ƒ§fƒ†”i,²2+“2ùoíÈXB©üÔ½ŒƒˆãH¤PŠ¬¥³ÅcÈÂçªGžù³¿Æ×jÇ ©È5ÐQKa=y‘ïñ6¼aÏêÏ6Š¢?Õ…Vá     
