@@ -77,8 +77,8 @@ WSGI_APPLICATION = 'Estore.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'ClothingStore',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'onlinestore',
         'USER':'postgres',
         'PASSWORD':'313313',
         'HOST':'localhost',
@@ -133,7 +133,7 @@ MEDIA_URL='/media/'
 
 import dj_database_url
 db_from_env = dj_database_url.config(conn_max_age=600)
-DATABASES['default']=dj_database_url.config(default='postgres://postgres:313313@localhost:5432/ClothingStore')
+DATABASES['default']=dj_database_url.config(default='postgres://postgres:313313@localhost:5432/onlinestore')
 DATABASES['default'].update(db_from_env)
 
 
