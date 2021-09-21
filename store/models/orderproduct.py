@@ -1,12 +1,15 @@
+from django.db.models.deletion import DO_NOTHING
 from django.shortcuts import get_object_or_404
 from django.db.models import Case, When
 from django.db import models
 from django.db.models.fields.related import ForeignKey
 from .order import Order
 from .products import Products
+from .customer import Customer
 class OrderProduct(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
     product = models.ForeignKey(Products, on_delete=models.DO_NOTHING)
+    customer = models.ForeignKey(Customer, on_delete=DO_NOTHING, default="")
     quantity = models.IntegerField()
 
     def __str__(self):
@@ -83,3 +86,13 @@ class OrderProduct(models.Model):
         preserved = Case(*[When(pk=pk, then=pos) for pos, pk in enumerate(p_list)])
         queryset = Products.objects.filter(pk__in=p_list).order_by(preserved)[:5]
         return queryset
+    @staticmethod
+    def fetch_customer_order_objects(cust):
+        obj = Order.objects.filter(customer=cust)
+        context={}
+        context['objects'] = obj
+
+        return context
+            
+            
+            

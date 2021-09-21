@@ -25,7 +25,7 @@ class Order(models.Model):
     shipping_address = models.CharField(max_length=100, default='')
     phno = models.BigIntegerField(default=00000000000)
     email = models.EmailField(default="")
-    date = models.DateTimeField(auto_now_add=True)
+    date = models.DateTimeField(default=datetime.now,blank=True)
     price = models.IntegerField(default=0)
     payment_method = models.ForeignKey(Payment_method, on_delete=models.DO_NOTHING, null=True)
     name_additional = models.CharField(max_length=20, null=True,blank=True)

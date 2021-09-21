@@ -59,6 +59,7 @@ class Checkout(View):
         keys = None
         products = None
         error_msg=None
+        context={}
         if cart:
             keys = cart.keys()
             products = Products.get_product_by_product_id(keys)
@@ -100,7 +101,8 @@ class Checkout(View):
                 for p in products:
                     orderprod = OrderProduct(order = order,
                     product = p,
-                    quantity = c.product_quantity(p, cart))
+                    quantity = c.product_quantity(p, cart),
+                    customer = cust)
                     orderprod.save()
                 request.session['cart'] = None
                 return redirect('success')
@@ -109,4 +111,11 @@ class Checkout(View):
         else:
             error_msg='No Products in cart. Enter Products in Cart First.'
         if error_msg:
-            return render(request, 'checkout.html', {'error_msg':error_msg})
+            context['pay_method'] = Payment_method.get_all_payemnt_methods()
+            context['error_msg']=error_msg
+            context['customer'] = cust
+            if cust:
+                profile = Profile.whether_customer_exists(cust)
+            if profile:
+                context['profile'] = profile
+            return render(request, 'checkout.html', context)
