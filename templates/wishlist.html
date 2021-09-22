@@ -28,7 +28,6 @@
                                         <tr>
                                             <th>Product</th>
                                             <th>Price</th>
-                                            <th>Quantity</th>
                                             <th>Add to Cart</th>
                                             <th>Remove</th>
                                         </tr>
@@ -43,12 +42,7 @@
                                                 </div>
                                             </td>
                                             <td>${{p.price}}</td>
-                                            <td>
-                                                    <input type="text" value={{p|product_quantity:request.session.cart}}>
-                                                
-                                                    
-                                                
-                                            </td>
+                                            
                                             <td>
                                                 <form action="" method="POST" class="float-right ">
                                                 {% csrf_token %}

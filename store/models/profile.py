@@ -8,15 +8,15 @@ class Profile(models.Model):
     job_position = models.CharField(max_length=40, null=True)
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
     phno = models.BigIntegerField(default=00000000000, null=True)
-    home_address = models.TextField(default="", null=True)
-    shipping_address = models.TextField(default="", null=True)
-    postal_address = models.TextField(default="", null=True)
+    home_address = models.CharField(max_length=200,default="", null=True)
+    shipping_address = models.CharField(max_length=200,default="", null=True)
+    postal_address = models.CharField(max_length=200,default="", null=True)
     zip_code = models.IntegerField(default=0, null=True)
 
     def __str__(self):
         return self.name
     @staticmethod
-    def whether_customer_exists(customer):
+    def fetch_customer_profile(customer):
         return Profile.objects.filter(customer = customer).first()
     
 

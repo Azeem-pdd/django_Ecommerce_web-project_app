@@ -7,6 +7,7 @@ from ..models.order import Order
 from ..models.orderproduct import OrderProduct
 from ..models.profile import Profile
 from ..forms.ProfileForm import ProfileForm
+from ..models.payment_method import Payment_method
 class MyAccount(View):
     @method_decorator(auth_middleware)
     def get(self, request):
@@ -14,23 +15,27 @@ class MyAccount(View):
         
 
         if customer:
-            profile = Profile.whether_customer_exists(customer)
+            profile = Profile.fetch_customer_profile(customer)
             form = None
-            form = ProfileForm(instance=profile)
             context=OrderProduct.fetch_customer_order_objects(customer)
             
-            context['form']=form
+            
             
             if profile:
+
+                form = None
+                form = ProfileForm(instance=profile)
+                context['form']=form
                 context['profile'] = profile
-        
-        print(context)  
+                payment_method = Payment_method.objects.all()
+                context['payment_method'] = payment_method
+
         return render(request, 'my-account.html',context)
 
     def post(self, request):
         customer = request.session.get('customer')
         if customer:
-            profile = Profile.whether_customer_exists(customer)
+            profile = Profile.fetch_customer_profile(customer)
             if profile:
                 form = ProfileForm(request.POST or None, request.FILES or None,instance=profile)
                 if form.is_valid():
@@ -48,7 +53,7 @@ class MyAccount(View):
             form = ProfileForm(instance=profile)
             context = {'form':form}
 
-            return render(request, 'my-account.html',context)
+            return redirect('myaccount')
                 
 
                 

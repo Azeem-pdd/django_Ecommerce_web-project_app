@@ -26,6 +26,7 @@ class Wishlist(View):
         add_to_cart = request.POST.get('add_to_cart')
         wishlist = request.session.get('wishlist')
         cart = request.session.get('cart')
+        quan = None
         try:
             quantity = cart.get(product)
             quan = wishlist.get(product)
@@ -43,10 +44,9 @@ class Wishlist(View):
                 cart[product] = 1
             request.session['cart'] = cart
         elif wishlist:
-            if quan:
-                
-                if delete:
-                    wishlist.pop(product)
+           
+            if delete:
+                wishlist.pop(product)
                     
         else:
             request.session.wishlist = {}
