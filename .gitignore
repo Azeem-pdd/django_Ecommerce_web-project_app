@@ -1,8 +1,4 @@
 __pycache__
-/media/**
-/static/**
-!/static
-!/media
 */migrations/**
 !*/migrations
 !*/migrations/__init__.py
