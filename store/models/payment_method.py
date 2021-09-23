@@ -2,7 +2,7 @@ from django.db import models
 
 class Payment_method(models.Model):
     name = models.CharField(max_length=20)
-    desc = models.CharField(max_length=200, default='')
+    desc = models.CharField(max_length=200)
     img = models.ImageField(upload_to='pics')
 
     def __str__(self):
@@ -13,4 +13,6 @@ class Payment_method(models.Model):
     @staticmethod
     def get_payemnt_method_by_id(id):
         return Payment_method.objects.filter(id = id)
+
+
     
