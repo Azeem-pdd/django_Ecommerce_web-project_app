@@ -60,7 +60,6 @@ class Checkout(View):
         products = None
         error_msg=None
         context={}
-        print(pay_method)
         if cart:
             keys = cart.keys()
             products = Products.get_product_by_product_id(keys)
