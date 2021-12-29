@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '0_4$mzu555-$!qd5-%qhc-zk=8ykykyto^yaz9h9(gwj0#ex77'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG =False
+DEBUG = True
 ALLOWED_HOSTS = ['127.0.0.1','shopoutfitsonline.herokuapp.com']
 
 
@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'paypal.standard.ipn',
+    
 ]
 
 MIDDLEWARE = [
@@ -52,6 +54,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'Estore.urls'
+
 
 TEMPLATES = [
     {
@@ -68,6 +71,7 @@ TEMPLATES = [
         },
     },
 ]
+
 
 WSGI_APPLICATION = 'Estore.wsgi.application'
 
@@ -124,6 +128,10 @@ USE_TZ = True
 STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
 
 STATIC_URL = '/static/'
+if DEBUG==True:
+    STATICFILES_DIRS=[
+        os.path.join(BASE_DIR, 'static')
+    ]
 
 
 MEDIA_ROOT=os.path.join(BASE_DIR,'media')
@@ -136,3 +144,18 @@ DATABASES['default'].update(db_from_env)
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
+# smtp configuration
+
+EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST='smtp.gmail.com'
+EMAIL_PORT='587'
+EMAIL_USE_TLS=True
+EMAIL_HOST_USER='mazeemakramnns@gmail.com'
+EMAIL_HOST_PASSWORD='Azeem@313'
+
+
+# paypal configuration
+
+PAYPAL_RECEIVER_EMAIL='ak@akram.com'
+PAYPAL_TEST=True

@@ -43,7 +43,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <label>Mobile No</label>
-                                            <input class="form-control" value="{{profile.phno}}" name="phno" type="text" placeholder="Mobile No" required>
+                                            <input class="form-control" value="{{customer.phno}}" name="phno" type="text" placeholder="Mobile No" required>
                                         </div>
                                         <div class="col-md-12">
                                             <label>Address</label>
@@ -70,8 +70,10 @@
                                             <div class="checkout-summary">
                                                 {% for p in pay_method %}
                                                 <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" name="pay_method" class="custom-control-input" id="{{p.id}}" value="{{p.id}}">
-                                                    <label class="custom-control-label" for="{{p.id}}" >{{p.name}}</label>
+                                                    <fieldset id='pay_method'>
+                                                        <input type="radio" name="pay_method" value="{{p.id}}">
+                                                        <label>{{p.name}}</label><br>
+                                                    </fieldset>
                                                 </div>
                                                 {% endfor %}
                                             </div>

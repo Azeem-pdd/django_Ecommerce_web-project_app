@@ -15,7 +15,7 @@ class Checkout(View):
     @method_decorator(auth_middleware)
     def get(self, request):
         customer = request.session.get('customer')
-        cust = Customer.objects.filter(id=customer).first
+        cust = Customer.objects.get(id=customer)
         cart = request.session.get('cart')
         ids = []
         products = None
@@ -34,7 +34,7 @@ class Checkout(View):
         context['customer'] = cust
         context['pay_method'] = Payment_method.get_all_payemnt_methods()
         if customer:
-            profile = Profile.whether_customer_exists(customer)
+            profile = Profile.fetch_customer_profile(cust)
             if profile:
                 context['profile'] = profile
 
@@ -60,6 +60,7 @@ class Checkout(View):
         products = None
         error_msg=None
         context={}
+        print(pay_method)
         if cart:
             keys = cart.keys()
             products = Products.get_product_by_product_id(keys)
@@ -94,7 +95,9 @@ class Checkout(View):
                         order.shipping_address = Profile.objects.get(customer=cust).shipping_address
                     except:
                         pass
+                
                 order.save()
+                request.session['order_id']=order.id
                     
             
                     
@@ -104,8 +107,9 @@ class Checkout(View):
                     quantity = c.product_quantity(p, cart),
                     customer = cust)
                     orderprod.save()
-                request.session['cart'] = None
-                return redirect('success')
+                
+                
+                return redirect('process_payment')
             else:
                 error_msg='Choose payment method'
         else:
@@ -115,7 +119,7 @@ class Checkout(View):
             context['error_msg']=error_msg
             context['customer'] = cust
             if cust:
-                profile = Profile.whether_customer_exists(cust)
+                profile = Profile.fetch_customer_profile(cust)
             if profile:
                 context['profile'] = profile
             return render(request, 'checkout.html', context)

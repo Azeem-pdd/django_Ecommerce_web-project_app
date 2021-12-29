@@ -29,6 +29,9 @@ class MyAccount(View):
                 context['profile'] = profile
                 payment_method = Payment_method.objects.all()
                 context['payment_method'] = payment_method
+            else:
+                form=ProfileForm()
+                context['form']=form
 
         return render(request, 'my-account.html',context)
 
@@ -45,9 +48,10 @@ class MyAccount(View):
                 cust = Customer.objects.filter(id = customer).first()
                 
                 form = ProfileForm(request.POST or None, request.FILES or None)
-                form1 = form.save(commit=False)
-                form1.customer = cust
-                form1.save()
+                if form.is_valid():
+                    form1 = form.save(commit=False)
+                    form1.customer = cust
+                    form1.save()
                 
             
             form = ProfileForm(instance=profile)

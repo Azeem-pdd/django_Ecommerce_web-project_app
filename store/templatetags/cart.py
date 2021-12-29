@@ -1,4 +1,6 @@
 from django import template
+
+from store.models.customer import Customer
 from ..models.profile import Profile
 
 register = template.Library()

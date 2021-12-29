@@ -62,7 +62,7 @@ class Index(View):
         return dic
 
     def get(self, request):
-    
+        
         cart = request.session.get('cart')
         wishlist = request.session.get('wishlist')
         if not cart:

@@ -147,23 +147,37 @@
                                     <img width="50" height="70" id="profileImage" src="https://p1.pxfuel.com/preview/423/292/62/girl-studio-female-woman-profile-black-and-white.jpg" />
                                     {% endif %}
                                     </div><br><br><br><br><br><br>
-                                    <form action="/my-account" method="post" enctype="multipart/form-data">
-                                        {% csrf_token %}
-                                        
-                                            {{form.as_p}}
-                                        {% if request.session.customer|check_customer_profile %}
-                                        <div class="col-md-12">
-                                            <button type="submit" class="btn">update profile</button>
-                                            <br><br>
+                                    <div class="col-lg-6">
+                                        <div class="register-form">
+                                            <form action="/my-account" method="post" enctype="multipart/form-data">
+                                                {% csrf_token %}
+                                                
+                                                    
+                                                    {% for field in form %}
+                                                    <div class="col-md-24">
+                                                        {{field.label_tag}}
+                                                        
+                                                        <input class="form-control" type="{{field.field.widget.input_type}}" name="{{field.html_name}}" value="{{field.value}}" placeholder="{{field.html_name}}" required>
+                                                        
+                                                    </div>
+                                                    {% endfor %}
+                                                    
+
+                                                {% if request.session.customer|check_customer_profile %}
+                                                <div class="col-md-12">
+                                                    <button type="submit" class="btn">update profile</button>
+                                                    <br><br>
+                                                </div>
+                                                {% else %}
+                                                <div class="col-md-12">
+                                                    <button type="submit" class="btn">Create profile</button>
+                                                    <br><br>
+                                                </div>
+                                                {% endif %}
+                                            </form>
                                         </div>
-                                        {% else %}
-                                        <div class="col-md-12">
-                                            <button type="submit" class="btn">Create profile</button>
-                                            <br><br>
-                                        </div>
-                                        {% endif %}
-                                    </form>
                                     
+                                    </div>
                                 </div>
                                 
                             </div>

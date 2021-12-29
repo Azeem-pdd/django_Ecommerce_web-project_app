@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.contrib.auth.admin import UserAdmin
 from django.contrib.admin import register
 from .models.customer import Customer
 from .models.order import Order
@@ -8,6 +9,9 @@ from .models.profile import Profile
 from .models.order import Order
 from .models.payment_method import Payment_method
 from .models.orderproduct import OrderProduct
+
+
+
 
 # Register your models here.
 admin.site.register(Catagory)
