@@ -19,11 +19,11 @@ def process_payment(request):
         'item_name': 'Order {}'.format(order_id),
         'invoice': str(order_id),
         'currency_code': 'USD',
-        'notify_url': 'http://{}{}'.format('127.0.0.1:8000',
+        'notify_url': 'http://{}{}'.format('https://shopoutfitsonline.herokuapp.com/',
                                            reverse('paypal-ipn')),
-        'return_url': 'http://{}{}'.format('127.0.0.1:8000',
+        'return_url': 'http://{}{}'.format('https://shopoutfitsonline.herokuapp.com/',
                                            reverse('payment_done')),
-        'cancel_return': 'http://{}{}'.format('127.0.0.1:8000',
+        'cancel_return': 'http://{}{}'.format('https://shopoutfitsonline.herokuapp.com/',
                                               reverse('payment_cancelled')),
     }
     form=PayPalPaymentsForm(initial=paypal_dict)
